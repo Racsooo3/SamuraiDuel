@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Function
+public static class Function
 {
     // intput the two Type of the attack 
     //return the damage that I take
     // out -1 if error
-    public int CalDamage(AttackType myType , AttackType opponentType)
+    public static int CalDamage(AttackType myType , AttackType opponentType)
     {
         switch (myType)
         {
@@ -47,4 +47,29 @@ public class Function
         }
         return -1;
     }
+
+    // return a array that random distrubt card from the card left
+    public static AttackType[] CardDistribute(int playerNum)
+    {
+        AttackType[] result = new AttackType[3];
+        int[] deck = GameData.GetPlayerCardLeft(playerNum);
+        for (int x =0; x < 3; x++)
+        {
+            int randomcard  = Random.Range(1, deck[0] + deck[1] + deck[2]);
+            if(randomcard - deck[2] <= 0)
+            {
+                result[x] = AttackType.Counter;
+            }
+            else if (randomcard - deck[1] - deck[2] <= 0)
+            {
+                result[x] = AttackType.Sneak;
+            }
+            else
+            {
+                result[x] = AttackType.Slash;
+            }
+        }
+        return result;
+    }
+
 }
