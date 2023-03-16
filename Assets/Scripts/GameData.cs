@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GameData
+public class GameData
 {
-    [SerializeField] private static int maxHealth;
-    [SerializeField] private static int totalNumberOfRound;
+    private static int maxHealth = 100;
+    private static int totalNumberOfRound = 3;
 
     public static int player1Health;
     public static int player2Health;
