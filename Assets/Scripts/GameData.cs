@@ -31,7 +31,7 @@ public static class GameData
         return null;
     }
 
-    public static void initialize()
+    public static void Initialize()
     {
         player1Health = maxHealth;
         player2Health = maxHealth;
