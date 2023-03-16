@@ -59,14 +59,17 @@ public static class Function
             if(randomcard - deck[2] <= 0)
             {
                 result[x] = AttackType.Counter;
+                deck[2] = deck[2] - 1;
             }
             else if (randomcard - deck[1] - deck[2] <= 0)
             {
                 result[x] = AttackType.Sneak;
+                deck[1] = deck[1] - 1;
             }
             else
             {
                 result[x] = AttackType.Slash;
+                deck[0] = deck[0] - 1;
             }
         }
         return result;
