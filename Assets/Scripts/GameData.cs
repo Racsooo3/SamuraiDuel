@@ -18,6 +18,28 @@ public class GameData
     public static int player2SneakLeft;
     public static int player2CounterLeft;
 
+    //********************************************************************************************************************
+    //********************************************************************************************************************
+    // After the player uses every card, make sure renew what card is left, and remove the card from the list below
+    //********************************************************************************************************************
+    //********************************************************************************************************************
+
+    public static List<AttackType> player1CardList = new List<AttackType>();
+    public static List<AttackType> player2CardList = new List<AttackType>();
+
+    public static List<AttackType> GetPlayerCardList(int playerNum)
+    {
+        if (playerNum == 1)
+        {
+            return player1CardList;
+        }
+        else if (playerNum == 2)
+        {
+            return player2CardList;
+        }
+        else return null;
+    }
+
     public static int[] GetPlayerCardLeft(int playerNum)
     {
         if (playerNum == 1)

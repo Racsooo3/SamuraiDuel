@@ -50,7 +50,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         }
         else
         {
-            rectTransform.anchoredPosition = positionAfterDragEnd;
+            //rectTransform.anchoredPosition = positionAfterDragEnd;
         }
     }
     private GameObject detectCollideWithWhichGB()

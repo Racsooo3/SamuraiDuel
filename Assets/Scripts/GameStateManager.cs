@@ -13,7 +13,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
-        currentState = CardDistributeState;
+        currentState = StartState;
 
         currentState.EnterState(this);
     }
