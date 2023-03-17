@@ -18,6 +18,11 @@ public class GameCalDamageState : GameBaseState
         Debug.Log("P1 HP: " + GameData.player1Health);
         Debug.Log("P2 HP: " + GameData.player2Health);
 
+        // do all the card management
+        CardManager cardManager = GameObject.FindObjectOfType<CardManager>();
+        cardManager.DeleteUsedCardFromCardLeft();
+        cardManager.AddCardToCardLastRount();
+
         game.SwitchState(game.AnimationState);
     }
 
