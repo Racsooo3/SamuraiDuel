@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 88042890}
   - component: {fileID: 88042892}
   m_Layer: 0
-  m_Name: Player 2
+  m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,11 +302,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88042889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 1, z: 0}
+  m_LocalPosition: {x: -3, y: 1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &88042892
 Animator:
@@ -442,8 +442,9 @@ GameObject:
   - component: {fileID: 256217637}
   - component: {fileID: 256217636}
   - component: {fileID: 256217638}
+  - component: {fileID: 256217639}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -508,11 +509,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256217635}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 2, y: 1, z: 0}
+  m_LocalPosition: {x: 3, y: 1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &256217638
 Animator:
@@ -533,6 +534,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &256217639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256217635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec56cc9d1d0eb994080c359bda2872da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  couterTime: 0
+  slashTime: 0
+  sneakTime: 0
+  idleTime: 0
 --- !u!1 &291779538
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,6 +803,7 @@ GameObject:
   - component: {fileID: 518537004}
   - component: {fileID: 518537006}
   - component: {fileID: 518537008}
+  - component: {fileID: 518537007}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -832,6 +850,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4696668c9ac8f42ae429d37ec1e4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &518537007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518537003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4351203e0343d4e97d49bf136fc45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 88042889}
+  player2: {fileID: 256217635}
 --- !u!114 &518537008
 MonoBehaviour:
   m_ObjectHideFlags: 0
