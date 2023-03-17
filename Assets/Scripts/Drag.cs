@@ -17,7 +17,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public int playerNum;
 
     private Vector2 positionAfterDragEnd;
-    private int slot;
+    private int slot=0;
 
     private void Awake()
     {
@@ -73,21 +73,30 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             {
                 for(int x = 0; x<3; x++)
                 {
-                    if (DragToObject[x]== tempCollideGO && playerNum==1)
+                    if (DragToObject[x]== tempCollideGO && playerNum==1 && GameData.player1CardOrder[x] == AttackType.Empty)
                     {
+                        GameData.player1CardOrder[slot] = AttackType.Empty;
                         GameData.player1CardOrder[x] = attackType;
                         slot = x;
+                        rectTransform.anchoredPosition = tempCollideGO.GetComponent<RectTransform>().anchoredPosition;
                         UnityEngine.Debug.Log(String.Format("Player1CardOrder: {0} , {1} , {2}", GameData.player1CardOrder[0], GameData.player1CardOrder[1], GameData.player1CardOrder[2]));
+                        return;
                     }
-                    if (DragToObject[x]== tempCollideGO && playerNum==2)
+                    else if (DragToObject[x]== tempCollideGO && playerNum==2 && GameData.player2CardOrder[x] == AttackType.Empty)
                     {
+                        GameData.player2CardOrder[slot] = AttackType.Empty;
                         slot = x;
                         GameData.player2CardOrder[x] = attackType;
+                        rectTransform.anchoredPosition = tempCollideGO.GetComponent<RectTransform>().anchoredPosition;
                         UnityEngine.Debug.Log(String.Format("Player2CardOrder: {0} , {1} , {2}", GameData.player2CardOrder[0], GameData.player2CardOrder[1], GameData.player2CardOrder[2]));
+                        return;
+                    }
+                    else
+                    {
+                        rectTransform.anchoredPosition = positionAfterDragEnd;
                     }
 
                 }
-                rectTransform.anchoredPosition = tempCollideGO.GetComponent<RectTransform>().anchoredPosition;
             }
         }
         else
@@ -119,5 +128,4 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         }
         return null;
     }
-
 }
