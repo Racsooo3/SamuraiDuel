@@ -8,8 +8,8 @@ public class GameAnimationState : GameBaseState
     {
         Debug.Log("AnimationState");
 
-        BlackDesk();
-
+        //BlackDesk();
+        game.SwitchState(game.CardDistributeState);
 
     }
 

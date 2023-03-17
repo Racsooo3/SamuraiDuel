@@ -7,6 +7,13 @@ public class GameCardDistributeState : GameBaseState
     public override void EnterState(GameStateManager game)
     {
         Debug.Log("CardDistributeState");
+
+        // New Round has started
+        GameData.currentRound++;
+        if (GameData.currentRound >= GameData.totalNumberOfRound)
+        {
+            game.SwitchState(game.EndState);
+        }
         
         GameData.player1CardList = new List<AttackType>();
         GameData.player2CardList = new List<AttackType>();

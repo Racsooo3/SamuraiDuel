@@ -5,7 +5,18 @@ using UnityEngine;
 public class GameData
 {
     private static int maxHealth = 100;
-    private static int totalNumberOfRound = 3;
+
+    // Change round number udner Initialize()
+    public static int totalNumberOfRound
+    {
+        get;
+        private set;
+    }
+    public static int currentRound
+    {
+        get;
+        set;
+    }
 
     public static int player1Health = 100;
     public static int player2Health = 100;
@@ -72,6 +83,9 @@ public class GameData
 
     public static void Initialize()
     {
+        totalNumberOfRound = 3;
+        currentRound = 0;
+
         player1Health = maxHealth;
         player2Health = maxHealth;
 
@@ -82,6 +96,5 @@ public class GameData
         player2SlashLeft = totalNumberOfRound;
         player2SneakLeft = totalNumberOfRound;
         player2CounterLeft = totalNumberOfRound;
-
     }
 }
