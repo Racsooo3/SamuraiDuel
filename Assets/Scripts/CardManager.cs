@@ -10,12 +10,12 @@ public class CardManager : MonoBehaviour
     [SerializeField] private GameObject slashCard;
     [SerializeField] private GameObject sneakCard;
     [SerializeField] private GameObject counterCard;
-    private void Start()
+    /*private void Start()
     {
         UnityEngine.Debug.Log("testing spawn card, delete this start if not want test");
         GameData.player1CardList =new List <AttackType>{ AttackType.Counter,AttackType.Sneak};
         SpawnDeck(1);
-    }
+    }*/
     public void DeleteAllCard()
     {
         for(int x=0; x < transform.childCount ; x++)
