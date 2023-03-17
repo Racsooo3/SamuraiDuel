@@ -9,11 +9,9 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     private RectTransform rectTransform;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
-    [Header("Which Ui do you want to drag to")]
-    [SerializeField] private GameObject[] DragToObject;
-
-    [SerializeField] private GameObject Deck;
-    [Header("CardNumber should range 1 -5")]
+    
+    public GameObject[] DragToObject;
+    public GameObject Deck;
     public int cardNumber;
 
     private Vector2 positionAfterDragEnd;
@@ -23,6 +21,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        
         if (TryGetComponent<CanvasGroup>(out CanvasGroup CG))
         {
             canvasGroup = CG;
