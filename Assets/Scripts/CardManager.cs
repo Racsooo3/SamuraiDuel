@@ -148,10 +148,6 @@ public class CardManager : MonoBehaviour
                 GameData.player2CounterLeft--;
             }
         }
-        UnityEngine.Debug.Log(GameData.player1SlashLeft);
-        UnityEngine.Debug.Log(GameData.player1SneakLeft);
-        UnityEngine.Debug.Log(GameData.player1CounterLeft);
-
     }
     public void DeleteAllCard()
     {
