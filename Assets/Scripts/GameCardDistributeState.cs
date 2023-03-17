@@ -7,6 +7,19 @@ public class GameCardDistributeState : GameBaseState
     public override void EnterState(GameStateManager game)
     {
         Debug.Log("CardDistributeState");
+        
+        GameData.player1CardList = new List<AttackType>();
+        GameData.player2CardList = new List<AttackType>();
+
+
+        foreach (AttackType cards in GameData.player1CardLastRound)
+        {
+            GameData.player1CardList.Add(cards);
+        }
+        foreach (AttackType cards in GameData.player2CardLastRound)
+        {
+            GameData.player2CardList.Add(cards);
+        }
 
         //Distribute Cards
         AttackType[] player1CardsGetInThisRound = Function.CardDistribute(1);
@@ -21,7 +34,10 @@ public class GameCardDistributeState : GameBaseState
             GameData.player2CardList.Add(cards);
         }
 
-        game.SwitchState(game.PlaceCardOneState);
+        GameData.player1CardOrder = new List<AttackType> { AttackType.Empty, AttackType.Empty, AttackType.Empty };
+        GameData.player2CardOrder = new List<AttackType> { AttackType.Empty, AttackType.Empty, AttackType.Empty };
+
+    game.SwitchState(game.PlaceCardOneState);
     }
 
     public override void UpdateState(GameStateManager game)
