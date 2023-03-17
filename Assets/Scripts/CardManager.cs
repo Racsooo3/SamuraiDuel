@@ -52,6 +52,7 @@ public class CardManager : MonoBehaviour
         tempDrag.Deck = Deck;
         tempDrag.attackType = at;
         tempDrag.playerNum =playerNumber;
+        tempDrag.cardNumber = cardNumber;
         tempCard.GetComponent<RectTransform>().anchoredPosition= Deck.transform.Find(String.Format("deck{0}", cardNumber)).GetComponent<RectTransform>().anchoredPosition;
     }
 }
