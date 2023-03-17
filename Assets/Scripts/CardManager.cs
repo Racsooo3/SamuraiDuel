@@ -18,38 +18,44 @@ public class CardManager : MonoBehaviour
         SpawnDeck(1);
     }*/
 
-    public void DeleteLastRoundCardFromCardLeft()
+    public void DeleteFromCardLeft(int playerNum ,AttackType[] Cards)
     {
-        foreach (AttackType tempCard in GameData.player1CardLastRound)
+        if (playerNum == 1)
         {
-            if (tempCard == AttackType.Slash)
-            {
-                GameData.player1SlashLeft--;
-            }
-            else if (tempCard == AttackType.Sneak)
-            {
-                GameData.player1SneakLeft--;
-            }
-            else if (tempCard == AttackType.Counter)
-            {
-                GameData.player1CounterLeft--;
-            }
+             foreach (AttackType tempCard in Cards)
+             {
+                if (tempCard == AttackType.Slash)
+                {
+                    GameData.player1SlashLeft--;
+                }
+                else if (tempCard == AttackType.Sneak)
+                {
+                    GameData.player1SneakLeft--;
+                }
+                else if (tempCard == AttackType.Counter)
+                {
+                    GameData.player1CounterLeft--;
+                }
+             }
         }
-        foreach (AttackType tempCard in GameData.player2CardLastRound)
+        else
         {
-            if (tempCard == AttackType.Slash)
+            foreach (AttackType tempCard in Cards)
             {
-                GameData.player2SlashLeft--;
+                if (tempCard == AttackType.Slash)
+                {
+                    GameData.player2SlashLeft--;
+                }
+                else if (tempCard == AttackType.Sneak)
+                {
+                    GameData.player2SneakLeft--;
+                }
+                else if (tempCard == AttackType.Counter)
+                {
+                    GameData.player2CounterLeft--;
+                }
             }
-            else if (tempCard == AttackType.Sneak)
-            {
-                GameData.player2SneakLeft--;
-            }
-            else if (tempCard == AttackType.Counter)
-            {
-                GameData.player2CounterLeft--;
-            }
-        }
+        }       
     }
     // one function for two player
     public void AddCardToCardLastRound()
@@ -116,39 +122,7 @@ public class CardManager : MonoBehaviour
 
     //this will get the cardOrder and delete them from the card left
     // one function for two player
-    public void DeleteUsedCardFromCardLeft()
-    {
-        foreach (AttackType tempCard in GameData.player1CardOrder)
-        {
-            if (tempCard == AttackType.Slash)
-            {
-                GameData.player1SlashLeft--;
-            }
-            else if (tempCard == AttackType.Sneak)
-            {
-                GameData.player1SneakLeft--;
-            }
-            else if (tempCard == AttackType.Counter)
-            {
-                GameData.player1CounterLeft--;
-            }
-        }
-        foreach (AttackType tempCard in GameData.player2CardOrder)
-        {
-            if (tempCard == AttackType.Slash)
-            {
-                GameData.player2SlashLeft--;
-            }
-            else if (tempCard == AttackType.Sneak)
-            {
-                GameData.player2SneakLeft--;
-            }
-            else if (tempCard == AttackType.Counter)
-            {
-                GameData.player2CounterLeft--;
-            }
-        }
-    }
+
     public void DeleteAllCard()
     {
         for(int x=0; x < transform.childCount ; x++)
