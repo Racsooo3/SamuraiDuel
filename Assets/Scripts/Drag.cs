@@ -17,7 +17,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public int playerNum;
 
     private Vector2 positionAfterDragEnd;
-    private int slot=0;
+    private int slot=-1;
 
     private void Awake()
     {
@@ -58,15 +58,21 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                 rectTransform.anchoredPosition = Deck.transform.Find(String.Format("deck{0}", cardNumber)).GetComponent<RectTransform>().anchoredPosition;
                 if(playerNum == 1)
                 {
-                    GameData.player1CardOrder[slot] = AttackType.Empty;
+                    if (slot != -1)
+                    {
+                        GameData.player1CardOrder[slot] = AttackType.Empty;
+                    }                  
                     UnityEngine.Debug.Log(String.Format("Player1CardOrder: {0} , {1} , {2}", GameData.player1CardOrder[0], GameData.player1CardOrder[1], GameData.player1CardOrder[2]));
-                    slot = 0;
+                    slot = -1;
                 }
                 if (playerNum == 2)
                 {
-                    GameData.player2CardOrder[slot] = AttackType.Empty;
+                    if (slot != -1)
+                    {
+                        GameData.player2CardOrder[slot] = AttackType.Empty;
+                    }
                     UnityEngine.Debug.Log(String.Format("Player2CardOrder: {0} , {1} , {2}", GameData.player2CardOrder[0], GameData.player2CardOrder[1], GameData.player2CardOrder[2]));
-                    slot = 0;
+                    slot = -1;
                 }
             }
             else
@@ -75,7 +81,10 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                 {
                     if (DragToObject[x]== tempCollideGO && playerNum==1 && GameData.player1CardOrder[x] == AttackType.Empty)
                     {
-                        GameData.player1CardOrder[slot] = AttackType.Empty;
+                        if (slot != -1)
+                        {
+                            GameData.player1CardOrder[slot] = AttackType.Empty;
+                        }                
                         GameData.player1CardOrder[x] = attackType;
                         slot = x;
                         rectTransform.anchoredPosition = tempCollideGO.GetComponent<RectTransform>().anchoredPosition;
@@ -84,7 +93,10 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                     }
                     else if (DragToObject[x]== tempCollideGO && playerNum==2 && GameData.player2CardOrder[x] == AttackType.Empty)
                     {
-                        GameData.player2CardOrder[slot] = AttackType.Empty;
+                        if (slot != -1)
+                        {
+                            GameData.player2CardOrder[slot] = AttackType.Empty;
+                        }
                         slot = x;
                         GameData.player2CardOrder[x] = attackType;
                         rectTransform.anchoredPosition = tempCollideGO.GetComponent<RectTransform>().anchoredPosition;
