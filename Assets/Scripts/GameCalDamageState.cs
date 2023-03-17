@@ -22,6 +22,7 @@ public class GameCalDamageState : GameBaseState
         CardManager cardManager = GameObject.FindObjectOfType<CardManager>();
         cardManager.DeleteUsedCardFromCardLeft();
         cardManager.AddCardToCardLastRound();
+        cardManager.DeleteLastRoundCardFromCardLeft();
 
         game.SwitchState(game.AnimationState);
     }
