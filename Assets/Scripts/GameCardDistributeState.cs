@@ -34,6 +34,7 @@ public class GameCardDistributeState : GameBaseState
         AttackType[] player1CardsGetInThisRound = Function.CardDistribute(1);
         AttackType[] player2CardsGetInThisRound = Function.CardDistribute(2);
 
+        //?
         CardManager cardManager = new CardManager();
         cardManager.DeleteFromCardLeft(1, player1CardsGetInThisRound);
         cardManager.DeleteFromCardLeft(2, player2CardsGetInThisRound);
