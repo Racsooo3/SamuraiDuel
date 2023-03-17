@@ -14,7 +14,6 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            MoveCloser();
             DetermineMove(GameData.player1CardOrder[0], 1);
             DetermineMove(GameData.player2CardOrder[0], 2);
         }
@@ -28,17 +27,22 @@ public class PlayerAnimation : MonoBehaviour
             DetermineMove(GameData.player1CardOrder[2], 1);
             DetermineMove(GameData.player2CardOrder[2], 2);
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ChangeAnimationState_P1("player_idle");
+            ChangeAnimationState_P2("player_idle");
+        }
     }
     /// <summary>
     /// Debug Purpose
     /// </summary>
 
 
-    public void MoveCloser()
+/*    public void MoveCloser()
     {
         player1.transform.position += new Vector3(2, 0, 0);
         player2.transform.position += new Vector3(-2, 0, 0);
-    }
+    }*/
 
     public void DetermineMove(AttackType attackType, int playerNum)
     {
