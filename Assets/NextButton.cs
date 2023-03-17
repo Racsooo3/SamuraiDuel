@@ -6,23 +6,26 @@ using UnityEngine.UI;
 
 public class NextButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Button Next;
+    private Button Next;
 
     private void Start()
     {
+        Next = GetComponent<Button>();
+
         Next.onClick.AddListener(() =>
         {
-
+            FindObjectOfType<GameStateManager>().PlaceCardOneState.EndTimer();
+            FindObjectOfType<GameStateManager>().PlaceCardTwoState.EndTimer();
 
         });
     }
 
-    void IPointerEnterHandler.OnPointerEnter(UnityEngine.EventSystems.PointerEventData eventData)
+    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        Next.transform.localScale = new Vector2(1.5f,1.5f);
+        Next.transform.localScale = new Vector2(1.1f,1.1f);
     }
 
-    void IPointerExitHandler.OnPointerExit(UnityEngine.EventSystems.PointerEventData eventData)
+    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
         Next.transform.localScale = new Vector2(1f, 1f);
     }

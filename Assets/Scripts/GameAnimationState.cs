@@ -7,10 +7,23 @@ public class GameAnimationState : GameBaseState
     public override void EnterState(GameStateManager game)
     {
         Debug.Log("AnimationState");
+
+        BlackDesk();
+
+
     }
 
     public override void UpdateState(GameStateManager game)
     {
         
     }
+
+    private void BlackDesk()
+    {
+        // Blacked out the control desk
+        GameObject panelMid = GameObject.Find("Panel Mid");
+        panelMid.SetActive(false);
+    }
+    
+
 }

@@ -7,8 +7,8 @@ public class GameData
     private static int maxHealth = 100;
     private static int totalNumberOfRound = 3;
 
-    public static int player1Health;
-    public static int player2Health;
+    public static int player1Health = 100;
+    public static int player2Health = 100;
 
     public static int player1SlashLeft;
     public static int player1SneakLeft;

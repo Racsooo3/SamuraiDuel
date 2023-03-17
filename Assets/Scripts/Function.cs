@@ -9,6 +9,7 @@ public static class Function
     // out -1 if error
     public static int CalDamage(AttackType myType , AttackType opponentType)
     {
+        // This damage is delt to self.
         switch (myType)
         {
             case AttackType.Sneak:
@@ -19,6 +20,8 @@ public static class Function
                     case AttackType.Slash:
                         return 2;
                     case AttackType.Counter:
+                        return 0;
+                    case AttackType.Empty:
                         return 0;
                 }
                 break;
@@ -31,6 +34,8 @@ public static class Function
                         return 0;
                     case AttackType.Counter:
                         return 0;
+                    case AttackType.Empty:
+                        return 0;
                 }
                 break;
             case AttackType.Slash:
@@ -42,6 +47,21 @@ public static class Function
                         return 2;
                     case AttackType.Counter:
                         return 1;
+                    case AttackType.Empty:
+                        return 0;
+                }
+                break;
+            case AttackType.Empty:
+                switch (opponentType)
+                {
+                    case AttackType.Sneak:
+                        return 1;
+                    case AttackType.Slash:
+                        return 2;
+                    case AttackType.Counter:
+                        return 0;
+                    case AttackType.Empty:
+                        return 0;
                 }
                 break;
         }
