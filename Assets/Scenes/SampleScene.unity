@@ -385,7 +385,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -757,6 +757,7 @@ GameObject:
   - component: {fileID: 518537005}
   - component: {fileID: 518537004}
   - component: {fileID: 518537006}
+  - component: {fileID: 518537007}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -803,6 +804,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4696668c9ac8f42ae429d37ec1e4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &518537007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518537003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7823b87c0bd70ea4c8db471036cce0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Next: {fileID: 132358900}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

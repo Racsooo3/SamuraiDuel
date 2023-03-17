@@ -8,7 +8,8 @@ public class GameStateManager : MonoBehaviour
     public GameStartState StartState = new GameStartState();
     public GameAnimationState AnimationState = new GameAnimationState();
     public GameCardDistributeState CardDistributeState = new GameCardDistributeState();
-    public GamePlaceCardState PlaceCardState = new GamePlaceCardState();
+    public GamePlaceCardOneState PlaceCardOneState = new GamePlaceCardOneState();
+    public GamePlaceCardTwoState PlaceCardTwoState = new GamePlaceCardTwoState();
     public GameEndState EndState = new GameEndState();
 
     private void Start()

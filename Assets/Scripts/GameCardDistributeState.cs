@@ -21,7 +21,7 @@ public class GameCardDistributeState : GameBaseState
             GameData.player2CardList.Add(cards);
         }
 
-        game.SwitchState(game.PlaceCardState);
+        game.SwitchState(game.PlaceCardOneState);
     }
 
     public override void UpdateState(GameStateManager game)
