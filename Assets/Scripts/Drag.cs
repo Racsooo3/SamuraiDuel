@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,10 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     private CanvasGroup canvasGroup;
     [Header("Which Ui do you want to drag to")]
     [SerializeField] private GameObject[] DragToObject;
+
+    [SerializeField] private GameObject Deck;
+    [Header("CardNumber should range 1 -5")]
+    public int cardNumber;
 
     private Vector2 positionAfterDragEnd;
 
@@ -46,11 +51,19 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         canvasGroup.blocksRaycasts = true;
         if (detectCollideWithWhichGB() != null)
         {
+            if(detectCollideWithWhichGB() == Deck)
+            {
+                rectTransform.anchoredPosition = Deck.transform.Find(String.Format("deck{0}", cardNumber)).GetComponent<RectTransform>().anchoredPosition;
+            }
+            else
+            {
             rectTransform.anchoredPosition = detectCollideWithWhichGB().GetComponent<RectTransform>().anchoredPosition;
+
+            }
         }
         else
         {
-            //rectTransform.anchoredPosition = positionAfterDragEnd;
+            rectTransform.anchoredPosition = positionAfterDragEnd;
         }
     }
     private GameObject detectCollideWithWhichGB()
@@ -77,4 +90,5 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         }
         return null;
     }
+
 }
