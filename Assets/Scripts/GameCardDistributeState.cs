@@ -27,6 +27,8 @@ public class GameCardDistributeState : GameBaseState
         {
             GameData.player2CardList.Add(cards);
         }
+        GameData.player1CardLastRound = new List<AttackType>();
+        GameData.player2CardLastRound = new List<AttackType>();
 
         //Distribute Cards
         AttackType[] player1CardsGetInThisRound = Function.CardDistribute(1);
