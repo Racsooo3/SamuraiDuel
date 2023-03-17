@@ -19,7 +19,7 @@ public class CardManager : MonoBehaviour
     }*/
 
     // one function for two player
-    public void AddCardToCardLastRount()
+    public void AddCardToCardLastRound()
     {
         int[] count = new int[] {0,0,0};
         foreach(AttackType tempCardInList in GameData.player1CardList)
