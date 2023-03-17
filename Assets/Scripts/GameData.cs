@@ -27,6 +27,20 @@ public class GameData
     public static List<AttackType> player1CardList = new List<AttackType>();
     public static List<AttackType> player2CardList = new List<AttackType>();
 
+    public static List<AttackType> player1CardOrder = new List<AttackType> {AttackType.Empty, AttackType.Empty, AttackType.Empty };
+    public static List<AttackType> player2CardOrder = new List<AttackType> {AttackType.Empty, AttackType.Empty, AttackType.Empty };
+
+    public static void ResetCardOrder(int playerNum)
+    {
+        if (playerNum == 1)
+        {
+            player1CardOrder = new List<AttackType> { AttackType.Empty, AttackType.Empty, AttackType.Empty };
+        }
+        else
+        {
+            player2CardOrder = new List<AttackType> { AttackType.Empty, AttackType.Empty, AttackType.Empty };
+        }
+    }
     public static List<AttackType> GetPlayerCardList(int playerNum)
     {
         if (playerNum == 1)

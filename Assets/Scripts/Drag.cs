@@ -13,9 +13,11 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public GameObject[] DragToObject;
     public GameObject Deck;
     public int cardNumber;
+    public AttackType attackType;
+    public int playerNum;
 
     private Vector2 positionAfterDragEnd;
-
+    private int slot;
 
     private void Awake()
     {
@@ -48,16 +50,44 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
-        if (detectCollideWithWhichGB() != null)
+        GameObject tempCollideGO = detectCollideWithWhichGO();
+        if (tempCollideGO != null)
         {
-            if(detectCollideWithWhichGB() == Deck)
+            if(tempCollideGO == Deck)
             {
                 rectTransform.anchoredPosition = Deck.transform.Find(String.Format("deck{0}", cardNumber)).GetComponent<RectTransform>().anchoredPosition;
+                if(playerNum == 1)
+                {
+                    GameData.player1CardOrder[slot] = AttackType.Empty;
+                    UnityEngine.Debug.Log(String.Format("Player1CardOrder: {0} , {1} , {2}", GameData.player1CardOrder[0], GameData.player1CardOrder[1], GameData.player1CardOrder[2]));
+                    slot = 0;
+                }
+                if (playerNum == 2)
+                {
+                    GameData.player2CardOrder[slot] = AttackType.Empty;
+                    UnityEngine.Debug.Log(String.Format("Player2CardOrder: {0} , {1} , {2}", GameData.player2CardOrder[0], GameData.player2CardOrder[1], GameData.player2CardOrder[2]));
+                    slot = 0;
+                }
             }
             else
             {
-            rectTransform.anchoredPosition = detectCollideWithWhichGB().GetComponent<RectTransform>().anchoredPosition;
+                for(int x = 0; x<3; x++)
+                {
+                    if (DragToObject[x]== tempCollideGO && playerNum==1)
+                    {
+                        GameData.player1CardOrder[x] = attackType;
+                        slot = x;
+                        UnityEngine.Debug.Log(String.Format("Player1CardOrder: {0} , {1} , {2}", GameData.player1CardOrder[0], GameData.player1CardOrder[1], GameData.player1CardOrder[2]));
+                    }
+                    if (DragToObject[x]== tempCollideGO && playerNum==2)
+                    {
+                        slot = x;
+                        GameData.player2CardOrder[x] = attackType;
+                        UnityEngine.Debug.Log(String.Format("Player2CardOrder: {0} , {1} , {2}", GameData.player2CardOrder[0], GameData.player2CardOrder[1], GameData.player2CardOrder[2]));
+                    }
 
+                }
+                rectTransform.anchoredPosition = tempCollideGO.GetComponent<RectTransform>().anchoredPosition;
             }
         }
         else
@@ -65,7 +95,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             rectTransform.anchoredPosition = positionAfterDragEnd;
         }
     }
-    private GameObject detectCollideWithWhichGB()
+    private GameObject detectCollideWithWhichGO()
     {
         // set the touch border of this UI
         float xleft = rectTransform.anchoredPosition.x-(rectTransform.rect.width/2);

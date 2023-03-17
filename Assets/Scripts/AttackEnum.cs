@@ -1,4 +1,4 @@
 public enum AttackType
 {
-    Slash,Sneak,Counter
+    Slash,Sneak,Counter,Empty
 }

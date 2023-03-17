@@ -16,7 +16,6 @@ public class CardManager : MonoBehaviour
         GameData.player1CardList =new List <AttackType>{ AttackType.Counter,AttackType.Sneak};
         SpawnDeck(1);
     }
-    // this delete all child card under the card manager
     public void DeleteAllCard()
     {
         for(int x=0; x < transform.childCount ; x++)
@@ -26,22 +25,14 @@ public class CardManager : MonoBehaviour
     }
     public void SpawnDeck(int playerNumber)
     {
-        List<AttackType> tempDeck = null;
-        if (playerNumber == 1)
-        {
-            tempDeck = GameData.player1CardList;
-        }
-        else
-        {
-            tempDeck = GameData.player2CardList;
-        }
+        List<AttackType> tempDeck = GameData.GetPlayerCardList(playerNumber);
         for (int x=1; x < tempDeck.Count +1; x++)
         {
-            SpawnCard(x, tempDeck[x-1]);
+            SpawnCard(playerNumber ,x, tempDeck[x-1]);
         }
     }
     // spawn one card depends on the 1-5 car number and the attackType
-    private void SpawnCard(int cardNumber, AttackType at)
+    private void SpawnCard(int playerNumber ,int cardNumber, AttackType at)
     {
         GameObject tempCard = null;
         if ( at== AttackType.Slash)
@@ -59,6 +50,8 @@ public class CardManager : MonoBehaviour
         Drag tempDrag = tempCard.GetComponent<Drag>();
         tempDrag.DragToObject = Slots;
         tempDrag.Deck = Deck;
+        tempDrag.attackType = at;
+        tempDrag.playerNum =playerNumber;
         tempCard.GetComponent<RectTransform>().anchoredPosition= Deck.transform.Find(String.Format("deck{0}", cardNumber)).GetComponent<RectTransform>().anchoredPosition;
     }
 }
