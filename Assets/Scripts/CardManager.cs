@@ -12,7 +12,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] private GameObject counterCard;
     private void Start()
     {
-        UnityEngine.Debug.Log("testing spawn card");
+        UnityEngine.Debug.Log("testing spawn card, delete this start if not want test");
         GameData.player1CardList =new List <AttackType>{ AttackType.Counter,AttackType.Sneak};
         SpawnDeck(1);
     }
