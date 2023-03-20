@@ -25,8 +25,12 @@ public class GameAnimationState : GameBaseState
     {
         if (playerAnimation.anim_count < 0)
         {
-            BlackDesk(false);
-            game.SwitchState(game.CardDistributeState);
+            //check if the game has ended
+            if (GameData.currentRound >= GameData.totalNumberOfRound)
+            {
+                BlackDesk(true);
+            } else BlackDesk(false);
+            game.SwitchState(game.StartState);
         }
     }
 

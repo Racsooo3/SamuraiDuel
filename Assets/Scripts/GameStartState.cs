@@ -8,8 +8,16 @@ public class GameStartState : GameBaseState
     {
         Debug.Log("StartState");
 
-        GameData.Initialize();
-        game.SwitchState(game.CardDistributeState);
+        // Check wheather game is end
+        if (GameData.currentRound >= GameData.totalNumberOfRound)
+        {
+            game.SwitchState(game.EndState);
+        } else
+        {
+            // New Round has started // First round is = 1, second round = 2 ...
+            GameData.currentRound++;
+            game.SwitchState(game.CardDistributeState);
+        }
     }
 
     public override void UpdateState(GameStateManager game)

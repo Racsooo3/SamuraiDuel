@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameStateManager : MonoBehaviour
 {
     public GameBaseState currentState;
+    public GameInitiateState InitiateState = new GameInitiateState();
     public GameStartState StartState = new GameStartState();
     public GameAnimationState AnimationState = new GameAnimationState();
     public GameCardDistributeState CardDistributeState = new GameCardDistributeState();
@@ -15,7 +16,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
-        currentState = StartState;
+        currentState = InitiateState;
 
         currentState.EnterState(this);
     }

@@ -8,32 +8,13 @@ public class GameCardDistributeState : GameBaseState
     {
         Debug.Log("CardDistributeState");
 
-        // New Round has started
-        GameData.currentRound++;
-
-        if (GameData.currentRound >= GameData.totalNumberOfRound)
-        {
-            game.SwitchState(game.EndState);
-        }
-
-        // Displays //
-        // Update Card Left Display (Left and Right side)
+        // Displays // Update card display (Left and Right side)
         GameObject.FindObjectOfType<CardLeftDisplay>().UpdateCardLeftDisplay();
 
         GameData.player1CardList = new List<AttackType>();
         GameData.player2CardList = new List<AttackType>();
 
-        // Add card from LAST round
-        foreach (AttackType cards in GameData.player1CardLastRound)
-        {
-            GameData.player1CardList.Add(cards);
-        }
-        foreach (AttackType cards in GameData.player2CardLastRound)
-        {
-            GameData.player2CardList.Add(cards);
-        }
-        GameData.player1CardLastRound = new List<AttackType>();
-        GameData.player2CardLastRound = new List<AttackType>();
+        AddCardFromLastRoundToDeck();
 
         //Distribute Cards
         AttackType[] player1CardsGetInThisRound = Function.CardDistribute(1);
@@ -55,10 +36,8 @@ public class GameCardDistributeState : GameBaseState
 
         GameData.ResetCardOrder(1);
         GameData.ResetCardOrder(2);
-        /*GameData.player1CardOrder = new List<AttackType> { AttackType.Empty, AttackType.Empty, AttackType.Empty };
-        GameData.player2CardOrder = new List<AttackType> { AttackType.Empty, AttackType.Empty, AttackType.Empty };*/
 
-        // Displays //
+        // Displays // Update card display (turn the color into grey if the card is not in deck)
         GameObject.FindObjectOfType<CardLeftDisplay>().UpdateCardColorDisplay();
 
         game.SwitchState(game.PlaceCardOneState);
@@ -67,5 +46,21 @@ public class GameCardDistributeState : GameBaseState
     public override void UpdateState(GameStateManager game)
     {
 
+    }
+
+    private void AddCardFromLastRoundToDeck()
+    {
+        // Add card from LAST round
+        foreach (AttackType cards in GameData.player1CardLastRound)
+        {
+            GameData.player1CardList.Add(cards);
+        }
+        foreach (AttackType cards in GameData.player2CardLastRound)
+        {
+            GameData.player2CardList.Add(cards);
+        }
+        // Blank the list
+        GameData.player1CardLastRound = new List<AttackType>();
+        GameData.player2CardLastRound = new List<AttackType>();
     }
 }
