@@ -10,6 +10,11 @@ public class GameCardDistributeState : GameBaseState
 
         // New Round has started
         GameData.currentRound++;
+
+        // Displays //
+        // Update Card Left Display (Left and Right side)
+        GameObject.FindObjectOfType<CardLeftDisplay>().UpdateCardLeftDisplay();
+
         if (GameData.currentRound >= GameData.totalNumberOfRound)
         {
             game.SwitchState(game.EndState);
@@ -33,11 +38,10 @@ public class GameCardDistributeState : GameBaseState
         //Distribute Cards
         AttackType[] player1CardsGetInThisRound = Function.CardDistribute(1);
         AttackType[] player2CardsGetInThisRound = Function.CardDistribute(2);
-
-        //?
-        CardManager cardManager = new CardManager();
-        cardManager.DeleteFromCardLeft(1, player1CardsGetInThisRound);
-        cardManager.DeleteFromCardLeft(2, player2CardsGetInThisRound);
+        
+        //Removed Card Left in this round
+        Function.DeleteFromCardLeft(1, player1CardsGetInThisRound);
+        Function.DeleteFromCardLeft(2, player2CardsGetInThisRound);
 
         foreach (AttackType cards in player1CardsGetInThisRound)
         {
@@ -51,7 +55,10 @@ public class GameCardDistributeState : GameBaseState
         GameData.player1CardOrder = new List<AttackType> { AttackType.Empty, AttackType.Empty, AttackType.Empty };
         GameData.player2CardOrder = new List<AttackType> { AttackType.Empty, AttackType.Empty, AttackType.Empty };
 
-    game.SwitchState(game.PlaceCardOneState);
+        // Displays //
+        GameObject.FindObjectOfType<CardLeftDisplay>().UpdateCardColorDisplay();
+
+        game.SwitchState(game.PlaceCardOneState);
     }
 
     public override void UpdateState(GameStateManager game)

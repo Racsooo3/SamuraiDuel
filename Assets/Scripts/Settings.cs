@@ -22,4 +22,14 @@ public class Settings : MonoBehaviour
     {
         eachRoundTimer = settingSO.eachRoundTimer;
     }
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            print(" 1: "+ GameData.GetPlayerCardLeft(1)[0] + " " + GameData.GetPlayerCardLeft(1)[1] + " " + GameData.GetPlayerCardLeft(1)[2]);
+            print(" 2: "+ GameData.GetPlayerCardLeft(2)[0] + " " + GameData.GetPlayerCardLeft(2)[1] + " " + GameData.GetPlayerCardLeft(2)[2]);
+        }
+    }
 }

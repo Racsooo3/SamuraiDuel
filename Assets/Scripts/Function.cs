@@ -95,4 +95,44 @@ public static class Function
         return result;
     }
 
+    public static void DeleteFromCardLeft(int playerNum, AttackType[] Cards)
+    {
+        if (playerNum == 1)
+        {
+            foreach (AttackType tempCard in Cards)
+            {
+                if (tempCard == AttackType.Slash)
+                {
+                    GameData.player1SlashLeft--;
+                }
+                else if (tempCard == AttackType.Sneak)
+                {
+                    GameData.player1SneakLeft--;
+                }
+                else if (tempCard == AttackType.Counter)
+                {
+                    GameData.player1CounterLeft--;
+                }
+            }
+        }
+        else
+        {
+            foreach (AttackType tempCard in Cards)
+            {
+                if (tempCard == AttackType.Slash)
+                {
+                    GameData.player2SlashLeft--;
+                }
+                else if (tempCard == AttackType.Sneak)
+                {
+                    GameData.player2SneakLeft--;
+                }
+                else if (tempCard == AttackType.Counter)
+                {
+                    GameData.player2CounterLeft--;
+                }
+            }
+        }
+    }
+
 }

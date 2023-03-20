@@ -22,6 +22,7 @@ public class PlayerAnimation : MonoBehaviour
         get;
         private set;
     }
+
     public void StartAnimation()
     {
         MoveCloser();
@@ -92,22 +93,34 @@ public class PlayerAnimation : MonoBehaviour
 
     private void DetermineMove(AttackType attackType_P1, AttackType attackType_P2)
     {
+        /*
+         * Animation List:
+         * player_idle
+         * player_walk
+         * player_slash
+         * player_slash_countered
+         * player_counter
+         * player_counter_success
+         * player_sneak
+         * player_sneak_slashed
+        */
+
         switch (attackType_P1)
         {
             case AttackType.Slash:
                 switch (attackType_P2)
                 {
                     case AttackType.Slash:
-                        ChangeAnimationState_P1("player_slash"); 
-                        ChangeAnimationState_P2("player_slash"); 
+                        ChangeAnimationState_P1("player_slash_countered"); 
+                        ChangeAnimationState_P2("player_slash_countered"); 
                         break;
                     case AttackType.Counter:
-                        ChangeAnimationState_P1("player_slash"); 
+                        ChangeAnimationState_P1("player_slash_countered"); 
                         ChangeAnimationState_P2("player_counter_success");
                         break;
                     case AttackType.Sneak:
                         ChangeAnimationState_P1("player_slash");
-                        ChangeAnimationState_P2("player_sneak");
+                        ChangeAnimationState_P2("player_sneak_slashed");
                         break;
                     case AttackType.Empty:
                         ChangeAnimationState_P1("player_slash");
@@ -120,14 +133,14 @@ public class PlayerAnimation : MonoBehaviour
                 {
                     case AttackType.Slash:
                         ChangeAnimationState_P1("player_counter_success");
-                        ChangeAnimationState_P2("player_slash");
+                        ChangeAnimationState_P2("player_slash_countered");
                         break;
                     case AttackType.Counter:
                         ChangeAnimationState_P1("player_counter");
                         ChangeAnimationState_P2("player_counter");
                         break;
                     case AttackType.Sneak:
-                        ChangeAnimationState_P1("player_counter");
+                        ChangeAnimationState_P1("player_counter_fail");
                         ChangeAnimationState_P2("player_sneak");
                         break;
                     case AttackType.Empty:
@@ -140,16 +153,16 @@ public class PlayerAnimation : MonoBehaviour
                 switch (attackType_P2)
                 {
                     case AttackType.Slash:
-                        ChangeAnimationState_P1("player_sneak");
+                        ChangeAnimationState_P1("player_sneak_slashed");
                         ChangeAnimationState_P2("player_slash");
                         break;
                     case AttackType.Counter:
                         ChangeAnimationState_P1("player_sneak");
-                        ChangeAnimationState_P2("player_counter");
+                        ChangeAnimationState_P2("player_counter_fail");
                         break;
                     case AttackType.Sneak:
-                        ChangeAnimationState_P1("player_sneak");
-                        ChangeAnimationState_P2("player_sneak");
+                        ChangeAnimationState_P1("player_sneak_slashed");
+                        ChangeAnimationState_P2("player_sneak_slashed");
                         break;
                     case AttackType.Empty:
                         ChangeAnimationState_P1("player_sneak");

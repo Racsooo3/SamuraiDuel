@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 5424591528012152766}
   - component: {fileID: 5424591528012152737}
   - component: {fileID: 5424591528012152736}
+  - component: {fileID: 617154969308625948}
   m_Layer: 5
   m_Name: Card_Sneak
   m_TagString: Untagged
@@ -257,6 +258,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79163b63b00d04a4497e97c3a130b90c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &617154969308625948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424591528012152738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827f530f651b26642bdf584079bf5933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5424591529987878834
