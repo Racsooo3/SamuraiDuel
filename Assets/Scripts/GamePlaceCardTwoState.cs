@@ -11,7 +11,10 @@ public class GamePlaceCardTwoState : GameBaseState
     {
         Debug.Log("PlaceCardTwoState");
         //Change displayname on the UI
-        GameObject.Find("NameTag").GetComponent<NameTag>().ChangeText("Player 2", Color.blue);
+        GameObject.Find("NameTag").GetComponent<NameTag>().ChangeText("P2", Color.blue);
+
+        //Change cursor color
+        GameObject.Find("GameManager").GetComponent<CursorTexture>().ChangeCursorColor("blue");
 
         //Remove cards on desk
         CardManager cardManager = GameObject.FindObjectOfType<CardManager>();

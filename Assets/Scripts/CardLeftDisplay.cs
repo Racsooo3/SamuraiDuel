@@ -23,6 +23,7 @@ public class CardLeftDisplay : MonoBehaviour
     [SerializeField] Transform player2_sneak_pos;
 
     [SerializeField] float CardSpacing;
+    [SerializeField] float CardLeftSpacing;
 
     private void Start()
     {
@@ -142,7 +143,7 @@ public class CardLeftDisplay : MonoBehaviour
             cards_P1.Add(T);
 
             RectTransform rect = T.cardObject.GetComponent<RectTransform>();
-            rect.anchoredPosition += new Vector2(-CardSpacing * i + -150f, 0);
+            rect.anchoredPosition += new Vector2(-CardSpacing * i + -CardLeftSpacing, 0);
         }
         for (int i = 0; i < cardLastRound_P1[1]; i++)
         {
@@ -150,7 +151,7 @@ public class CardLeftDisplay : MonoBehaviour
             cards_P1.Add(T);
 
             RectTransform rect = T.cardObject.GetComponent<RectTransform>();
-            rect.anchoredPosition += new Vector2(-CardSpacing * i + -150f, 0);
+            rect.anchoredPosition += new Vector2(-CardSpacing * i + -CardLeftSpacing, 0);
         }
         for (int i = 0; i < cardLastRound_P1[2]; i++)
         {
@@ -158,7 +159,7 @@ public class CardLeftDisplay : MonoBehaviour
             cards_P1.Add(T);
 
             RectTransform rect = T.cardObject.GetComponent<RectTransform>();
-            rect.anchoredPosition += new Vector2(-CardSpacing * i + -150f, 0);
+            rect.anchoredPosition += new Vector2(-CardSpacing * i + -CardLeftSpacing, 0);
         }
         for (int i = 0; i < cardLastRound_P2[0]; i++)
         {
@@ -166,7 +167,7 @@ public class CardLeftDisplay : MonoBehaviour
             cards_P2.Add(T);
 
             RectTransform rect = T.cardObject.GetComponent<RectTransform>();
-            rect.anchoredPosition += new Vector2(CardSpacing * i + 150f, 0);
+            rect.anchoredPosition += new Vector2(CardSpacing * i + CardLeftSpacing, 0);
         }
         for (int i = 0; i < cardLastRound_P2[1]; i++)
         {
@@ -174,7 +175,7 @@ public class CardLeftDisplay : MonoBehaviour
             cards_P2.Add(T);
 
             RectTransform rect = T.cardObject.GetComponent<RectTransform>();
-            rect.anchoredPosition += new Vector2(CardSpacing * i + 150f, 0);
+            rect.anchoredPosition += new Vector2(CardSpacing * i + CardLeftSpacing, 0);
         }
         for (int i = 0; i < cardLastRound_P2[2]; i++)
         {
@@ -182,7 +183,7 @@ public class CardLeftDisplay : MonoBehaviour
             cards_P2.Add(T);
 
             RectTransform rect = T.cardObject.GetComponent<RectTransform>();
-            rect.anchoredPosition += new Vector2(CardSpacing * i + 150f, 0);
+            rect.anchoredPosition += new Vector2(CardSpacing * i + CardLeftSpacing, 0);
         }
     }
 

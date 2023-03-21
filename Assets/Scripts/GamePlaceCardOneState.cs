@@ -12,7 +12,10 @@ public class GamePlaceCardOneState : GameBaseState
     {
         Debug.Log("PlaceCardOneState");
         //Change displayname on the UI
-        GameObject.Find("NameTag").GetComponent<NameTag>().ChangeText("Player 1", Color.red);
+        GameObject.Find("NameTag").GetComponent<NameTag>().ChangeText("P1", Color.red);
+
+        //Change cursor color
+        GameObject.Find("GameManager").GetComponent<CursorTexture>().ChangeCursorColor("red");
 
         //Remove cards on desk
         CardManager cardManager = GameObject.FindObjectOfType<CardManager>();
@@ -23,6 +26,7 @@ public class GamePlaceCardOneState : GameBaseState
         //timer ref
         localTimer = GameObject.FindObjectOfType<Settings>().GetEachRoundTimer();
         timerText = GameObject.FindObjectOfType<Timer>();
+
     }
 
     public override void UpdateState(GameStateManager game)
