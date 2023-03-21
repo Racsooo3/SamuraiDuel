@@ -101,8 +101,10 @@ public class PlayerAnimation : MonoBehaviour
          * player_slash_countered
          * player_counter
          * player_counter_success
+         * player_counter_fail
          * player_sneak
          * player_sneak_slashed
+         * player_hurt
         */
 
         switch (attackType_P1)
@@ -124,7 +126,7 @@ public class PlayerAnimation : MonoBehaviour
                         break;
                     case AttackType.Empty:
                         ChangeAnimationState_P1("player_slash");
-                        ChangeAnimationState_P2("player_idle");
+                        ChangeAnimationState_P2("player_hurt");
                         break;
                 }
                 break;
@@ -166,7 +168,7 @@ public class PlayerAnimation : MonoBehaviour
                         break;
                     case AttackType.Empty:
                         ChangeAnimationState_P1("player_sneak");
-                        ChangeAnimationState_P2("player_idle");
+                        ChangeAnimationState_P2("player_hurt");
                         break;
                 }
                 break;
@@ -174,7 +176,7 @@ public class PlayerAnimation : MonoBehaviour
                 switch (attackType_P2)
                 {
                     case AttackType.Slash:
-                        ChangeAnimationState_P1("player_idle");
+                        ChangeAnimationState_P1("player_hurt");
                         ChangeAnimationState_P2("player_slash");
                         break;
                     case AttackType.Counter:
@@ -182,7 +184,7 @@ public class PlayerAnimation : MonoBehaviour
                         ChangeAnimationState_P2("player_counter");
                         break;
                     case AttackType.Sneak:
-                        ChangeAnimationState_P1("player_idle");
+                        ChangeAnimationState_P1("player_hurt");
                         ChangeAnimationState_P2("player_sneak");
                         break;
                     case AttackType.Empty:
