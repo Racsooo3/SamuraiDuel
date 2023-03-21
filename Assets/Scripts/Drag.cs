@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+
+public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerClickHandler
 {
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -12,6 +13,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     
     public GameObject[] DragToObject;
     public GameObject Deck;
+    public GameObject Fold;
     public int cardNumber;
     public AttackType attackType;
     public int playerNum;
@@ -31,6 +33,28 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         else
         {
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
+    }
+    public void OnPointerClick(PointerEventData pointerEventData)
+    {
+        rectTransform.anchoredPosition = Deck.transform.Find(String.Format("deck{0}", cardNumber)).GetComponent<RectTransform>().anchoredPosition;
+        if (playerNum == 1)
+        {
+            if (slot != -1)
+            {
+                GameData.player1CardOrder[slot] = AttackType.Empty;
+            }
+            UnityEngine.Debug.Log(String.Format("Player1CardOrder: {0} , {1} , {2}", GameData.player1CardOrder[0], GameData.player1CardOrder[1], GameData.player1CardOrder[2]));
+            slot = -1;
+        }
+        if (playerNum == 2)
+        {
+            if (slot != -1)
+            {
+                GameData.player2CardOrder[slot] = AttackType.Empty;
+            }
+            UnityEngine.Debug.Log(String.Format("Player2CardOrder: {0} , {1} , {2}", GameData.player2CardOrder[0], GameData.player2CardOrder[1], GameData.player2CardOrder[2]));
+            slot = -1;
         }
     }
 
@@ -75,6 +99,17 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                     slot = -1;
                 }
             }
+            else if (tempCollideGO == Fold)
+            {
+                rectTransform.anchoredPosition = Fold.GetComponent<RectTransform>().anchoredPosition;
+                if (slot != -1)
+                {
+                    GameData.player1CardOrder[slot] = AttackType.Empty;
+                }
+                UnityEngine.Debug.Log(String.Format("Player1CardOrder: {0} , {1} , {2}", GameData.player1CardOrder[0], GameData.player1CardOrder[1], GameData.player1CardOrder[2]));
+                slot = -1;
+            }
+
             else
             {
                 for(int x = 0; x<3; x++)

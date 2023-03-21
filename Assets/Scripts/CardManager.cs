@@ -7,6 +7,7 @@ public class CardManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] Slots;
     [SerializeField] private GameObject Deck;
+    [SerializeField] private GameObject Fold;
     [SerializeField] private GameObject slashCard;
     [SerializeField] private GameObject sneakCard;
     [SerializeField] private GameObject counterCard;
@@ -114,6 +115,7 @@ public class CardManager : MonoBehaviour
         tempDrag.attackType = at;
         tempDrag.playerNum =playerNumber;
         tempDrag.cardNumber = cardNumber;
+        tempDrag.Fold = Fold;
         tempCard.GetComponent<RectTransform>().anchoredPosition= Deck.transform.Find(String.Format("deck{0}", cardNumber)).GetComponent<RectTransform>().anchoredPosition;
     }
 }

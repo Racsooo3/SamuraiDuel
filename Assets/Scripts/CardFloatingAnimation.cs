@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class CardFloatingAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     RectTransform rect;
+    public bool isFold;
+    //if the card is fold it rise higher
     private void Start()
     {
         rect = GetComponent<RectTransform>();
