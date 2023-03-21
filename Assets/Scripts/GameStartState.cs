@@ -8,7 +8,8 @@ public class GameStartState : GameBaseState
     {
         Debug.Log("StartState");
 
-        GameObject.FindObjectOfType<RoundDisplay>().RoundTextDisplay(GameData.currentRound+1);
+        RoundDisplay RD = (RoundDisplay)GameObject.FindObjectOfType(typeof(RoundDisplay));
+            //.RoundTextDisplay(GameData.currentRound+1);
 
         // Check wheather game is end
         if (GameData.currentRound >= GameData.totalNumberOfRound)

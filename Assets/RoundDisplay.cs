@@ -6,10 +6,10 @@ using TMPro;
 
 public class RoundDisplay : MonoBehaviour
 {
-    private TextMeshProUGUI roundText;
+    private TMPro.TextMeshProUGUI roundText;
     void Start()
     {
-        roundText = GetComponentInChildren<TextMeshProUGUI>();
+        roundText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
     }
     public void RoundTextDisplay(int roundNum)
     {
