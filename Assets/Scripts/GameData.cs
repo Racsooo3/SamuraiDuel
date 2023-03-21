@@ -21,6 +21,9 @@ public class GameData
     public static int player1Health = 100;
     public static int player2Health = 100;
 
+    public static int player1Dominates = 0;
+    public static int player2Dominates = 0;
+
 
     // Players cards left to summon.
     public static int player1SlashLeft;

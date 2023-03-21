@@ -135,4 +135,23 @@ public static class Function
         }
     }
 
+    public static int GetDominantPlayer()
+    {
+        if (GameData.player1Health > GameData.player2Health)
+        {
+            return 1;
+        } else if (GameData.player1Health < GameData.player2Health)
+        {
+            return 2;
+        } else
+        {
+            return 0;
+        }
+    }
+    public static void ResetPlayerHealthPoint()
+    {
+        GameData.player1Health = 100;
+        GameData.player1Health = 100;
+    }
+
 }

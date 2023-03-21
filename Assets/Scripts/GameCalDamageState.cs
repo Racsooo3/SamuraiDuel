@@ -15,8 +15,10 @@ public class GameCalDamageState : GameBaseState
 
         GameData.player1Health -= PlayerOneTotalDamage();
         GameData.player2Health -= PlayerTwoTotalDamage();
-        Debug.Log("P1 HP: " + GameData.player1Health);
-        Debug.Log("P2 HP: " + GameData.player2Health);
+
+        RewardDominantPlayerInThisRound();
+
+        Debug.Log("Player One " + GameData.player1Dominates + " : " + GameData.player2Dominates + " Player Two");
 
         // do all the card management
         CardManager cardManager = GameObject.FindObjectOfType<CardManager>();
@@ -45,5 +47,26 @@ public class GameCalDamageState : GameBaseState
         int dmgReceivedInSlotTwo = Function.CalDamage(player2CardOrder[1], player1CardOrder[1]);
         int dmgReceivedInSlotThree = Function.CalDamage(player2CardOrder[2], player1CardOrder[2]);
         return dmgReceivedInSlotOne + dmgReceivedInSlotTwo + dmgReceivedInSlotThree;
+    }
+
+    private void RewardDominantPlayerInThisRound()
+    {
+        switch (Function.GetDominantPlayer())
+        {
+            case 0:
+                //Draw
+                GameData.player1Dominates += 1;
+                GameData.player2Dominates += 1;
+                break;
+            case 1:
+                //Player One Dominates! 
+                GameData.player1Dominates += 1;
+                break;
+            case 2:
+                //Player Two Dominates! 
+                GameData.player2Dominates += 1;
+                break;
+        }
+        Function.ResetPlayerHealthPoint();
     }
 }
