@@ -308,6 +308,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Deck: {fileID: 0}
+  Fold: {fileID: 0}
   cardNumber: 1
   attackType: 0
   playerNum: 0
@@ -342,7 +343,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6333428311895709051}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 827f530f651b26642bdf584079bf5933, type: 3}
   m_Name: 
