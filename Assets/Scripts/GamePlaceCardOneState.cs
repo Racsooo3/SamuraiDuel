@@ -49,6 +49,38 @@ public class GamePlaceCardOneState : GameBaseState
 
     public void EndTimer()
     {
-        localTimer = 0;
+        if (!DetermineIfMoreThan2CardLeftForPlayer1())
+        {
+            localTimer = 0;
+        }
+    }
+
+    private bool DetermineIfMoreThan2CardLeftForPlayer1()
+    {
+        int[] count= new int[] { 0, 0, 0 };
+        foreach(AttackType At in GameData.player1CardList)
+        {
+            count[(int)At]++;
+        }
+        foreach (AttackType At in GameData.player1CardOrder)
+        {
+            if (At!= AttackType.Empty)
+            {
+                count[(int)At]--;
+            }
+        }
+        for(int x =3; x < 3; x++)
+        {
+            count[x] -= GameData.player1CardFold[x];
+        }
+        if (count[0] + count[1] + count[2] > 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 }
