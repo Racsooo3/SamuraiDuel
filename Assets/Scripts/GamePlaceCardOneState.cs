@@ -107,7 +107,7 @@ public class GamePlaceCardOneState : GameBaseState
         }
         int leftCard = count[0] + count[1] + count[2];
         leftCard -= 2;
-        for (int x = 0, x< 3; x++)
+        for (int x = 0; x< 3; x++)
         {
             for(int y = count[x]; y <= 0; y--)
             {
