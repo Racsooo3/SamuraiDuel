@@ -34,7 +34,6 @@ public class CardFloatingAnimation : MonoBehaviour, IPointerEnterHandler, IPoint
     {
         if (isFloating)
         {
-            rect.anchoredPosition += new Vector2(0, -15f);
             isFloating = false;
         }
     }
