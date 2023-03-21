@@ -36,7 +36,12 @@ public class CardManager : MonoBehaviour
                 }
             }
         }
-        for(int x=0; x < 3; x++)
+        for(int x = 0; x < 3; x++)
+        {
+            count[x] = count[x] - GameData.player1CardFold[x];
+        }
+        GameData.player1CardFold = new int[] { 0, 0, 0 };
+        for (int x=0; x < 3; x++)
         {
             for (int y=0; y< count[x]; y++)
             {
@@ -72,6 +77,11 @@ public class CardManager : MonoBehaviour
                 GameData.player2CardLastRound.Add((AttackType)x);
             }
         }
+        for (int x = 0; x < 3; x++)
+        {
+            count[x] = count[x] - GameData.player2CardFold[x];
+        }
+        GameData.player1CardFold = new int[] { 0, 0, 0 };
 
     }
 

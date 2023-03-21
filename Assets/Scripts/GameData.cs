@@ -49,6 +49,9 @@ public class GameData
     public static List<AttackType> player1CardLastRound = new List<AttackType>() ;
     public static List<AttackType> player2CardLastRound = new List<AttackType>() ;
 
+    public static int[] player1CardFold = new int[] { 0, 0, 0 };
+    public static int[] player2CardFold = new int[] { 0, 0, 0 };
+
     public static void ResetCardOrder(int playerNum)
     {
         if (playerNum == 1)

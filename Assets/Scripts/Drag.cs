@@ -20,6 +20,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     private Vector2 positionAfterDragEnd;
     private int slot=-1;
+    private bool isFold = false;
 
     private void Awake()
     {
@@ -55,6 +56,18 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             }
             UnityEngine.Debug.Log(String.Format("Player2CardOrder: {0} , {1} , {2}", GameData.player2CardOrder[0], GameData.player2CardOrder[1], GameData.player2CardOrder[2]));
             slot = -1;
+        }
+        if (isFold)
+        {
+            isFold = false;
+            if (playerNum == 1)
+            {
+                GameData.player1CardFold[(int)attackType]--;
+            }
+            else
+            {
+                GameData.player2CardFold[(int)attackType]--;
+            }
         }
     }
 
@@ -101,6 +114,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             }
             else if (tempCollideGO == Fold)
             {
+                isFold = true;
                 rectTransform.anchoredPosition = Fold.GetComponent<RectTransform>().anchoredPosition;
                 if (slot != -1)
                 {
@@ -108,6 +122,14 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                 }
                 UnityEngine.Debug.Log(String.Format("Player1CardOrder: {0} , {1} , {2}", GameData.player1CardOrder[0], GameData.player1CardOrder[1], GameData.player1CardOrder[2]));
                 slot = -1;
+                if (playerNum == 1)
+                {
+                    GameData.player1CardFold[(int)attackType]++;
+                }
+                else
+                {
+                    GameData.player2CardFold[(int)attackType]++;
+                }
             }
 
             else
