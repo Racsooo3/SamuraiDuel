@@ -10,6 +10,9 @@ public class GamePlaceCardTwoState : GameBaseState
     public override void EnterState(GameStateManager game)
     {
         Debug.Log("PlaceCardTwoState");
+        //Change displayname on the UI
+        GameObject.Find("NameTag").GetComponent<NameTag>().ChangeText("Player 2", Color.blue);
+
         //Remove cards on desk
         CardManager cardManager = GameObject.FindObjectOfType<CardManager>();
         cardManager.DeleteAllCard();

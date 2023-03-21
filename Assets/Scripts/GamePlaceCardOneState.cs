@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class GamePlaceCardOneState : GameBaseState
@@ -10,6 +11,9 @@ public class GamePlaceCardOneState : GameBaseState
     public override void EnterState(GameStateManager game)
     {
         Debug.Log("PlaceCardOneState");
+        //Change displayname on the UI
+        GameObject.Find("NameTag").GetComponent<NameTag>().ChangeText("Player 1", Color.red);
+
         //Remove cards on desk
         CardManager cardManager = GameObject.FindObjectOfType<CardManager>();
         cardManager.DeleteAllCard();

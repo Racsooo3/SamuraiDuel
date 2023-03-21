@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OutlineMat
-  m_Shader: {fileID: -6465566751694194690, guid: 36009788f4d69b14aa552f81659ae6b0, type: 3}
+  m_Name: RedOutlineMat
+  m_Shader: {fileID: -6465566751694194690, guid: e4211e04c9394d64e8344f2d900d2ddf, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -38,6 +38,8 @@ Material:
     m_Floats:
     - Vector1_a7844fac35c4496f9c3a28bcdd1153b6: 0
     m_Colors:
+    - Color_24aaf022a452425c9c603cb109d6127a: {r: 1, g: 0, b: 0, a: 1}
+    - Color_566a67978102409dacc75d31bcad136d: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_1127081560a34412a99af5e34eea082b: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_350acc90672545ddbb01b1bac472f8ab: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_37af51e20d6c459caf3131b3ce4de7bb: {r: -0.004, g: 0, b: 0, a: 0}
