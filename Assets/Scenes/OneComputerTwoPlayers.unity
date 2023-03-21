@@ -2340,7 +2340,9 @@ MonoBehaviour:
   - {fileID: 291779538}
   - {fileID: 415360636}
   - {fileID: 1762300763}
+  - {fileID: 1528512222}
   Deck: {fileID: 1762300763}
+  Fold: {fileID: 1528512222}
   slashCard: {fileID: 5241199817358772802, guid: 01cd93f625101f64b884b96d876945ae, type: 3}
   sneakCard: {fileID: 5424591528012152738, guid: 50c22adaf18f0ca42959c71aa0753531, type: 3}
   counterCard: {fileID: 6333428311895709051, guid: c6248951744db9f4387cc6bebb5f100b, type: 3}
@@ -2553,6 +2555,7 @@ RectTransform:
   - {fileID: 2115510240}
   - {fileID: 702064938}
   - {fileID: 2109643255}
+  - {fileID: 1528512223}
   m_Father: {fileID: 68278681}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2561,6 +2564,56 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -806.28, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1528512222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1528512223}
+  - component: {fileID: 1528512224}
+  m_Layer: 5
+  m_Name: FoldArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1528512223
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528512222}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1415857632}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -770.62, y: -367.65}
+  m_SizeDelta: {x: 234.29, y: 300.22}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1528512224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528512222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &1540858648
 GameObject:
   m_ObjectHideFlags: 0
