@@ -11,14 +11,15 @@ public class NextButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void Start()
     {
         Next = GetComponent<Button>();
-    }
-    private void Update()
-    {
         Next.onClick.AddListener(() =>
         {
             FindObjectOfType<GameStateManager>().PlaceCardOneState.EndTimer();
             FindObjectOfType<GameStateManager>().PlaceCardTwoState.EndTimer();
         });
+    }
+    private void Update()
+    {
+        
     }
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
