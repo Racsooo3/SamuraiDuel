@@ -18,11 +18,18 @@ public class GameCalDamageState : GameBaseState
 
         RewardDominantPlayerInThisRound();
 
+        //Update the flag display that shows how many times the player dominates
+        GameObject.FindObjectOfType<FlagsManager>().
+            SetFlag("red", GameData.player1Dominates);
+        GameObject.FindObjectOfType<FlagsManager>().
+            SetFlag("blue", GameData.player2Dominates);
+
         Debug.Log("Player One " + GameData.player1Dominates + " : " + GameData.player2Dominates + " Player Two");
 
         // do all the card management
         CardManager cardManager = GameObject.FindObjectOfType<CardManager>();
         cardManager.AddCardToCardLastRound();
+
         game.SwitchState(game.AnimationState);
     }
 
@@ -55,8 +62,6 @@ public class GameCalDamageState : GameBaseState
         {
             case 0:
                 //Draw
-                GameData.player1Dominates += 1;
-                GameData.player2Dominates += 1;
                 break;
             case 1:
                 //Player One Dominates! 
