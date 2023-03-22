@@ -73,7 +73,7 @@ public class GamePlaceCardOneState : GameBaseState
                 count[(int)At]--;
             }
         }
-        for(int x =3; x < 3; x++)
+        for (int x =0; x < 3; x++)
         {
             count[x] -= GameData.player1CardFold[x];
         }
@@ -85,7 +85,6 @@ public class GamePlaceCardOneState : GameBaseState
         {
             return false;
         }
-        
     }
     private void RandomFoldCardUntilLeft2ForPlayer1()
     {

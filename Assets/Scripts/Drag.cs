@@ -68,6 +68,7 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             {
                 GameData.player2CardFold[(int)attackType]--;
             }
+            UnityEngine.Debug.Log(string.Format("{0},{1},{2}", GameData.player1CardFold[0], GameData.player1CardFold[1], GameData.player1CardFold[2]));
         }
     }
 
@@ -111,6 +112,19 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                     UnityEngine.Debug.Log(String.Format("Player2CardOrder: {0} , {1} , {2}", GameData.player2CardOrder[0], GameData.player2CardOrder[1], GameData.player2CardOrder[2]));
                     slot = -1;
                 }
+                if (isFold)
+                {
+                    isFold = false;
+                    if (playerNum == 1)
+                    {
+                        GameData.player1CardFold[(int)attackType]--;
+                    }
+                    else
+                    {
+                        GameData.player2CardFold[(int)attackType]--;
+                    }
+                    UnityEngine.Debug.Log(string.Format("{0},{1},{2}", GameData.player1CardFold[0], GameData.player1CardFold[1], GameData.player1CardFold[2]));
+                }
             }
             else if (tempCollideGO == Fold)
             {
@@ -145,7 +159,6 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                         GameData.player1CardOrder[x] = attackType;
                         slot = x;
                         rectTransform.anchoredPosition = tempCollideGO.GetComponent<RectTransform>().anchoredPosition;
-                        UnityEngine.Debug.Log(String.Format("Player1CardOrder: {0} , {1} , {2}", GameData.player1CardOrder[0], GameData.player1CardOrder[1], GameData.player1CardOrder[2]));
                         return;
                     }
                     else if (DragToObject[x]== tempCollideGO && playerNum==2 && GameData.player2CardOrder[x] == AttackType.Empty)
@@ -157,14 +170,25 @@ public class Drag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                         slot = x;
                         GameData.player2CardOrder[x] = attackType;
                         rectTransform.anchoredPosition = tempCollideGO.GetComponent<RectTransform>().anchoredPosition;
-                        UnityEngine.Debug.Log(String.Format("Player2CardOrder: {0} , {1} , {2}", GameData.player2CardOrder[0], GameData.player2CardOrder[1], GameData.player2CardOrder[2]));
                         return;
                     }
                     else
                     {
                         rectTransform.anchoredPosition = positionAfterDragEnd;
                     }
-
+                }
+                if (isFold)
+                {
+                    isFold = false;
+                    if (playerNum == 1)
+                    {
+                        GameData.player1CardFold[(int)attackType]--;
+                    }
+                    else
+                    {
+                        GameData.player2CardFold[(int)attackType]--;
+                    }
+                    UnityEngine.Debug.Log(string.Format("{0},{1},{2}", GameData.player1CardFold[0], GameData.player1CardFold[1], GameData.player1CardFold[2]));
                 }
             }
         }

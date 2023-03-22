@@ -70,7 +70,7 @@ public class GamePlaceCardTwoState : GameBaseState
                 count[(int)At]--;
             }
         }
-        for (int x = 3; x < 3; x++)
+        for (int x = 0; x < 3; x++)
         {
             count[x] -= GameData.player2CardFold[x];
         }

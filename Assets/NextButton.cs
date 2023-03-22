@@ -11,7 +11,13 @@ public class NextButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void Start()
     {
         Next = GetComponent<Button>();
+        Next.onClick.AddListener(() =>
+        {
+            FindObjectOfType<GameStateManager>().PlaceCardOneState.EndTimer();
+            FindObjectOfType<GameStateManager>().PlaceCardTwoState.EndTimer();
+        });
     }
+    /*
     private void Update()
     {
         Next.onClick.AddListener(() =>
@@ -20,7 +26,7 @@ public class NextButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             FindObjectOfType<GameStateManager>().PlaceCardTwoState.EndTimer();
         });
     }
-
+    */
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
         Next.transform.localScale = new Vector2(1.1f,1.1f);
