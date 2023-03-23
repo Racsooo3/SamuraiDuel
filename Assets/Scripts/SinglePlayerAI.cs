@@ -32,12 +32,14 @@ public class SinglePlayerAI
         if (isLastRound)
         {
             float[] usefullness = new float[myCardInHand];
+
             for(int x=0; x< myCardInHand; x++)
             {
-                usefullness[x] = DetermineUsefullness(GameData.player1CardList[x]);
+                usefullness[x] = DetermineUsefullness(GameData.player2CardList[x]);
             }
             AttackType[] tempAT = new AttackType[] {AttackType.Empty, AttackType.Empty, AttackType.Empty};
             int count = 0;
+            UnityEngine.Debug.Log("HERE");
             for(int x =5; x>-5 && count<=2; x--)
             {
                 for(int y=0;y<usefullness.Length && count<=2; y++)
