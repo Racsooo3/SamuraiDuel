@@ -74,7 +74,7 @@ public class SinglePlayerAI
             AttackType[] tempAt = new AttackType[3];
             for(int x =0; x < 3; x++)
             {
-                if (UnityEngine.Random.value < 0.4)
+                if (UnityEngine.Random.value < 0.85)
                 {
                     tempAt[x] = GameData.player2CardList[num[x]];
                 }
