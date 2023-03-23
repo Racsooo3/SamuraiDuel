@@ -16,18 +16,31 @@ public class ButtonManager : MonoBehaviour
     private void Start()
     {
         playButton.onClick.AddListener(() => {
-            Debug.Log("Enter Game");
-        
+            GetComponent<MainMenuTransition>().BlockedTransition();
+            Invoke("LoadSinglePlayer", 2f);
         });
 
         multiplayerButton.onClick.AddListener(() => {
-            Debug.Log("Enter Hosting/Joining Menu");
-
+            GetComponent<MainMenuTransition>().BlockedTransition();
+            Invoke("LoadMultiplayer", 2f);
         });
 
         settingsButton.onClick.AddListener(() => {
-             Debug.Log("Show Credit Window");
+            GetComponent<MainMenuTransition>().BlockedTransition();
+            Invoke("LoadSettings", 2f);
+        });
+    }
 
-         });
+    private void LoadSinglePlayer()
+    {
+        Debug.Log("Enter Game");
+    }
+    private void LoadMultiplayer()
+    {
+        Debug.Log("Enter Hosting/Joining Menu");
+    }
+    private void LoadSettings()
+    {
+        Debug.Log("Show settings Window");
     }
 }

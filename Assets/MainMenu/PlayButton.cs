@@ -15,8 +15,14 @@ public class PlayButton : MonoBehaviour
     private void Start()
     {
         playButton.onClick.AddListener(() => {
-            Debug.Log("Enter selection menu");
-            SceneManager.LoadScene("MainMenu");
+            GetComponent<MainMenuTransition>().BlockedTransition();
+            Invoke("LoadMainMenuScene", 2f);
         });
+    }
+
+    private void LoadMainMenuScene()
+    {
+        Debug.Log("Enter selection menu");
+        SceneManager.LoadScene("MainMenu");
     }
 }

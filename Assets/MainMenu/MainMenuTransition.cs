@@ -9,11 +9,32 @@ public class MainMenuTransition : MonoBehaviour
     [SerializeField]Transform rectangleParent;
     [SerializeField] float transitionTimePerTick;
 
+    [Header("Transition Animation")]
+    [SerializeField] bool transitionAnimationOnEnterScene;
+
     private void Start()
     {
-        TransitionReturn();
-        //TransitionStart();
+        rectangleParent.gameObject.SetActive(false);
+        if (transitionAnimationOnEnterScene)
+        {
+            UnblockedTransition();
+        }
     }
+
+    public void UnblockedTransition()
+    {
+        // From blocked to unblocked view
+        Blocked();
+        TransitionStart();
+    }
+
+    public void BlockedTransition()
+    {
+        // From unblocked to blocked view
+        Unblocked();
+        TransitionReturn();
+    }
+
 
     private List<Transform> GetListOfChildren(Transform parent)
     {
@@ -23,6 +44,17 @@ public class MainMenuTransition : MonoBehaviour
             rectangleList.Add(child);
         }
         return rectangleList;
+    }
+
+    private void Unblocked()
+    {
+        rectangleParent.gameObject.SetActive(true);
+        List<Transform> rectangleList = GetListOfChildren(rectangleParent);
+
+        foreach (Transform rectangle in rectangleList)
+        {
+            rectangle.GetComponent<RectTransform>().localScale = new Vector3(1, 0, 1);
+        }
     }
 
     private float Transition(float level)
@@ -37,16 +69,10 @@ public class MainMenuTransition : MonoBehaviour
         return rectangleList[0].GetComponent<RectTransform>().localScale.y;
     }
 
-    public void TransitionStart()
+    private void TransitionStart()
     {
-        List<Transform> rectangleList = GetListOfChildren(rectangleParent);
-
-        foreach (Transform rectangle in rectangleList)
-        {
-            rectangle.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
-        }
-
         rectangleParent.gameObject.SetActive(true);
+
         if (Transition(-0.25f) > 0)
         {
             Invoke("TransitionStart", transitionTimePerTick);
@@ -56,35 +82,34 @@ public class MainMenuTransition : MonoBehaviour
         }
     }
 
+    private void Blocked()
+    {
+        rectangleParent.gameObject.SetActive(true);
+        List<Transform> rectangleList = GetListOfChildren(rectangleParent);
+
+        foreach (Transform rectangle in rectangleList)
+        {
+            rectangle.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        }
+    }
+
     private float ReverseTransition(float level)
     {
         List<Transform> rectangleList = GetListOfChildren(rectangleParent);
 
         foreach (Transform rectangle in rectangleList)
         {
-            rectangle.GetComponent<RectTransform>().localScale -= new Vector3(0, level, 0);
+            rectangle.GetComponent<RectTransform>().localScale += new Vector3(0, level, 0);
         }
 
         return rectangleList[0].GetComponent<RectTransform>().localScale.y;
     }
 
-    public void TransitionReturn()
+    private void TransitionReturn()
     {
-        List<Transform> rectangleList = GetListOfChildren(rectangleParent);
-
-        foreach (Transform rectangle in rectangleList)
-        {
-            rectangle.GetComponent<RectTransform>().localScale = new Vector3(0, 1, 0);
-        }
-
-        rectangleParent.gameObject.SetActive(true);
-        if (ReverseTransition(-0.25f) < 1)
+        if (ReverseTransition(0.25f) < 1)
         {
             Invoke("TransitionReturn", transitionTimePerTick);
-        }
-        else
-        {
-            rectangleParent.gameObject.SetActive(false);
         }
     }
 }
