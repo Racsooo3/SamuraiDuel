@@ -6,11 +6,7 @@ using TMPro;
 
 public class RoundDisplay : MonoBehaviour
 {
-    private TMPro.TextMeshProUGUI roundText;
-    void Start()
-    {
-        roundText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-    }
+    [SerializeField]private TextMeshProUGUI roundText;
     public void RoundTextDisplay(int roundNum)
     {
         roundText.text = "Round " + roundNum;
