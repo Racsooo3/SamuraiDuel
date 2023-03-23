@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: player_counter_fail
+  m_Name: player_sneak_sneak
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,8 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 301546796166756635, guid: 3272b8e6879eb2449aef80eafe5bab87, type: 3}
-    - time: 1
+      value: {fileID: -841737774180941525, guid: 73f641f1cc900b641b15a5c919476208, type: 3}
+    - time: 0.033333335
+      value: {fileID: -3624738870556409930, guid: 73f641f1cc900b641b15a5c919476208, type: 3}
+    - time: 0.16666667
+      value: {fileID: 9003050157719236668, guid: 73f641f1cc900b641b15a5c919476208, type: 3}
+    - time: 0.23333333
+      value: {fileID: 5161797497644060161, guid: 73f641f1cc900b641b15a5c919476208, type: 3}
+    - time: 0.3
+      value: {fileID: 727126810601075434, guid: 73f641f1cc900b641b15a5c919476208, type: 3}
+    - time: 1.25
       value: {fileID: 7756541288465939565, guid: 55accdcd3a1e7bc47b5281c4ba64ef58, type: 3}
     - time: 2
       value: {fileID: 7756541288465939565, guid: 55accdcd3a1e7bc47b5281c4ba64ef58, type: 3}
@@ -44,7 +52,11 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 301546796166756635, guid: 3272b8e6879eb2449aef80eafe5bab87, type: 3}
+    - {fileID: -841737774180941525, guid: 73f641f1cc900b641b15a5c919476208, type: 3}
+    - {fileID: -3624738870556409930, guid: 73f641f1cc900b641b15a5c919476208, type: 3}
+    - {fileID: 9003050157719236668, guid: 73f641f1cc900b641b15a5c919476208, type: 3}
+    - {fileID: 5161797497644060161, guid: 73f641f1cc900b641b15a5c919476208, type: 3}
+    - {fileID: 727126810601075434, guid: 73f641f1cc900b641b15a5c919476208, type: 3}
     - {fileID: 7756541288465939565, guid: 55accdcd3a1e7bc47b5281c4ba64ef58, type: 3}
     - {fileID: 7756541288465939565, guid: 55accdcd3a1e7bc47b5281c4ba64ef58, type: 3}
   m_AnimationClipSettings:
@@ -71,4 +83,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1.25
+    functionName: SpawnOneDamage
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
