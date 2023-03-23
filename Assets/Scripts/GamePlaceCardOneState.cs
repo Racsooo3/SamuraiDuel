@@ -86,8 +86,9 @@ public class GamePlaceCardOneState : GameBaseState
             return false;
         }
     }
-    private void RandomFoldCardUntilLeft2ForPlayer1()
+    public void RandomFoldCardUntilLeft2ForPlayer1()
     {
+        GameData.player1CardFold = new int[3] { 0, 0, 0 };
         int[] count = new int[] { 0, 0, 0 };
         foreach (AttackType At in GameData.player1CardList)
         {
@@ -100,26 +101,29 @@ public class GamePlaceCardOneState : GameBaseState
                 count[(int)At]--;
             }
         }
-        for (int x = 3; x < 3; x++)
-        {
-            count[x] -= GameData.player1CardFold[x];
-        }
         int leftCard = count[0] + count[1] + count[2];
-        leftCard -= 2;
-        for (int x = 0; x< 3; x++)
+        int[] fold = new int[3] { 0, 0, 0 };
+        while (count[0] + count[1] + count[2] > 2)
         {
-            for(int y = count[x]; y <= 0; y--)
+            if (count[2] > 0)
             {
-                if (leftCard > 0)
-                {
-                    GameData.player1CardFold[x]++;
-                    leftCard--;
-                }
-                else
-                {
-                    return;
-                }
+                fold[2]++;
+                count[2]--;
+                continue;
+            }
+            if (count[1] > 0)
+            {
+                fold[1]++;
+                count[1]--;
+                continue;
+            }
+            if (count[0] > 0)
+            {
+                fold[0]++;
+                count[0]--;
+                continue;
             }
         }
+        GameData.player1CardFold = fold;
     }
 }
