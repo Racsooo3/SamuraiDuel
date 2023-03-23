@@ -6,8 +6,9 @@ using static UnityEngine.ParticleSystem;
 public class SinglePlayerAI 
 {
     //enemy is player 2 
-    public void Ai(bool isLastRound)
+    public void AIRun()
     {
+        bool isLastRound = GameData.currentRound >= GameData.totalNumberOfRound;
         // cal how many card dose enemy have in hand
         int enemyCardInHand = 0;
         foreach (AttackType tempcard in GameData.player1CardList)

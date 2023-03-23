@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
+    [SerializeField] private bool SinglePlayer;
     public GameBaseState currentState;
     public GameInitiateState InitiateState = new GameInitiateState();
     public GameStartState StartState = new GameStartState();
@@ -28,7 +29,19 @@ public class GameStateManager : MonoBehaviour
 
     public void SwitchState(GameBaseState state)
     {
+        if(state== PlaceCardTwoState && SinglePlayer)
+        {
+            UnityEngine.Debug.Log("sct");
+            SinglePlayerState();
+            state = CalDamageState;
+        }
         currentState = state;
         state.EnterState(this);
+    }
+    // skip player2 state and run the AI
+    private void SinglePlayerState()
+    {
+        SinglePlayerAI singlePlayerAI = new SinglePlayerAI();
+        singlePlayerAI.AIRun();
     }
 }
