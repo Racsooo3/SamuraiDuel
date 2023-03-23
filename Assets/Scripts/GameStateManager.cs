@@ -31,7 +31,6 @@ public class GameStateManager : MonoBehaviour
     {
         if(state== PlaceCardTwoState && SinglePlayer)
         {
-            UnityEngine.Debug.Log("sct");
             SinglePlayerState();
             state = CalDamageState;
         }
