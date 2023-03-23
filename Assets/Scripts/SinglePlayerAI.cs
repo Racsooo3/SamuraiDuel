@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,22 +56,22 @@ public class SinglePlayerAI
         {
             // random num that get form random of GameData.player2CardList
             int[] num = new int[3] { -1,-1,-1};
-            num[0] = (int)Mathf.Floor(Random.Range(0f, (float)myCardInHand-0.01f));
+            num[0] = (int)Mathf.Floor(UnityEngine.Random.Range(0f, (float)myCardInHand-0.01f));
             num[1] = num[0];
             while (num[0] == num[1])
             {
-                num[1] = (int)Mathf.Floor(Random.Range(0f, (float)myCardInHand - 0.01f));
+                num[1] = (int)Mathf.Floor(UnityEngine.Random.Range(0f, (float)myCardInHand - 0.01f));
             }
             num[2] = num[0];
             while (num[2] == num[0] || num[2] == num[1])
             {
-                num[2] = (int)Mathf.Floor(Random.Range(0f, (float)myCardInHand - 0.01f));
+                num[2] = (int)Mathf.Floor(UnityEngine.Random.Range(0f, (float)myCardInHand - 0.01f));
             }
             //random empty and card
             AttackType[] tempAt = new AttackType[3];
             for(int x =0; x < 3; x++)
             {
-                if (Random.value < 0.9)
+                if (UnityEngine.Random.value < 0.9)
                 {
                     tempAt[x] = GameData.player2CardList[num[x]];
                 }
@@ -122,6 +123,8 @@ public class SinglePlayerAI
             }
             GameData.player2CardFold = count;
         }
+        UnityEngine.Debug.Log(String.Format("Player2CardOrder: {0} , {1} , {2}", GameData.player2CardOrder[0], GameData.player2CardOrder[1], GameData.player2CardOrder[2]));
+        UnityEngine.Debug.Log(String.Format("Player2Cardfold: {0} , {1} , {2}", GameData.player2CardFold[0], GameData.player2CardFold[1], GameData.player2CardFold[2]));
         return;
     }
     private int DetermineUsefullness(AttackType At)
@@ -176,15 +179,15 @@ public class SinglePlayerAI
     }
     private void RandomToOrder(AttackType[] At)
     {
-        GameData.player1CardOrder = new List<AttackType>{ AttackType.Empty, AttackType.Empty, AttackType.Empty };
-        int first = (int)Mathf.Floor(Random.Range(0f, 2.99f));
+        GameData.player2CardOrder = new List<AttackType>{ AttackType.Empty, AttackType.Empty, AttackType.Empty };
+        int first = (int)Mathf.Floor(UnityEngine.Random.Range(0f, 2.99f));
         GameData.player2CardOrder[first] = At[0];
         int second = first;
         while (first == second)
         {
-            second = (int)Mathf.Floor(Random.Range(0f, 2.99f));
+            second = (int)Mathf.Floor(UnityEngine.Random.Range(0f, 2.99f));
         }
-        GameData.player1CardOrder[second] = At[1];
+        GameData.player2CardOrder[second] = At[1];
         int third = 0;
         for(int x = 0; x < 3; x++)
         {
