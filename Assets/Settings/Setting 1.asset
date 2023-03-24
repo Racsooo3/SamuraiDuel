@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979dd22cf72a8924183fc56678b14f3d, type: 3}
   m_Name: Setting 1
   m_EditorClassIdentifier: 
-  eachRoundTimer: 90
+  waitingTime: 90

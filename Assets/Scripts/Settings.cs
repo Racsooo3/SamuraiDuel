@@ -7,22 +7,11 @@ public class Settings : MonoBehaviour
     [Header("Place your settings file here")]
     [SerializeField] private SettingScriptableObject settingSO;
 
-    private float eachRoundTimer;
-
-    void Awake()
-    {
-        UpdateSettingsFromSO();
-    }
-
     public float GetEachRoundTimer()
     {
-        return eachRoundTimer;
+        Debug.Log(settingSO.waitingTime);
+        return settingSO.waitingTime;
     }
-    void UpdateSettingsFromSO()
-    {
-        eachRoundTimer = settingSO.eachRoundTimer;
-    }
-
 
     private void Update()
     {

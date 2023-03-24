@@ -49,6 +49,7 @@ public class ButtonManager : MonoBehaviour
     }
     private void LoadSettings()
     {
-        Debug.Log("Show settings Window");
+        Debug.Log("Load Setting Scene");
+        SceneManager.LoadScene("SettingsMenu");
     }
 }
