@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    [SerializeField] Button playButton;
+    [SerializeField] Button tutorialButton;
+    [SerializeField] Button singleButton;
     [SerializeField] Button multiplayerButton;
     [SerializeField] Button settingsButton;
 
@@ -16,7 +17,7 @@ public class ButtonManager : MonoBehaviour
 
     private void Start()
     {
-        playButton.onClick.AddListener(() => {
+        singleButton.onClick.AddListener(() => {
             GetComponent<MainMenuTransition>().BlockedTransition();
             StartCoroutine(LoadSinglePlayer());
         });
@@ -29,6 +30,11 @@ public class ButtonManager : MonoBehaviour
         settingsButton.onClick.AddListener(() => {
             GetComponent<MainMenuTransition>().BlockedTransition();
             Invoke("LoadSettings", 2f);
+        });
+
+        tutorialButton.onClick.AddListener(() => {
+            GetComponent<MainMenuTransition>().BlockedTransition();
+            Invoke("LoadTutorial", 2f);
         });
     }
     private IEnumerator LoadSinglePlayer()
@@ -46,6 +52,11 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("OneComputerTwoPlayers");
         yield return new WaitForSeconds(0.01f);
         GameObject.Find("/GameManager").GetComponent<GameStateManager>().SinglePlayer = false;
+    }
+    private void LoadTutorial()
+    {
+        Debug.Log("Load Tutorial");
+        SceneManager.LoadScene("Tutorial");
     }
     private void LoadSettings()
     {

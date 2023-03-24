@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     // Thank you ChatGPT
     static float[] ConvertSecondsToMinutesAndSeconds(float totalSeconds)
     {
-        float minutes = totalSeconds / 60;
+        float minutes = Mathf.FloorToInt(totalSeconds / 60);
         float seconds = totalSeconds % 60;
         float[] timeArray = { minutes, seconds };
         return timeArray;

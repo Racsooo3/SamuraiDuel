@@ -48,6 +48,7 @@ public class MainMenuTransition : MonoBehaviour
 
     private void Unblocked()
     {
+        rectangleParent.parent.gameObject.SetActive(true);
         rectangleParent.gameObject.SetActive(true);
         List<Transform> rectangleList = GetListOfChildren(rectangleParent);
 
@@ -84,6 +85,7 @@ public class MainMenuTransition : MonoBehaviour
 
     private void Blocked()
     {
+        rectangleParent.parent.gameObject.SetActive(true);
         rectangleParent.gameObject.SetActive(true);
         List<Transform> rectangleList = GetListOfChildren(rectangleParent);
 

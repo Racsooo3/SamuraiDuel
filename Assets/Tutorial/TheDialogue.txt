@@ -1,0 +1,18 @@
+Welcome to the samurai school, I am your master, Master Who.
+In this tutorial, you will be learning how to fight like a samurai.
+First, you must know that you have 3 ways to fight.
+They are Slash, Counter, and Sneak Attack.
+Slash does 2 damage, it cancels enemy's sneak attack, but could be countered using Counter.
+Counter can nullify enemy's Slash, and fight back to deal 1 damage, but it could not nullify Sneak Attack.
+Sneak Attack is a quick attack that breakthrough Counters and does 1 damage. But it does not work on ememy's Slash.
+Here is the restriction map if you need it.
+There are 3 rounds in total. Every round has 3 slot that represents the order of using the attacks, from left to right.
+You have to determine which attack to use in every slot.
+Of course, you can also make it blank to bait attacks.
+You can read you and your ememy's attacks here. The attacks that are availible in this round are lighten up.
+After place the attacks, you can click next to watch the battle.
+Another important thing to mention, you must not hold more than 2 cards before you end your turn.
+If you have too many attacks, you can fold your card by placing them on the fold area.
+When you deal more damage than your enemy, you dominates in that round.
+You must dominate 2 rounds to win the fight. 
+That's basically today's lesson. Good luck, my student.
