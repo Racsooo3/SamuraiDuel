@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -17,12 +18,12 @@ public class ButtonManager : MonoBehaviour
     {
         playButton.onClick.AddListener(() => {
             GetComponent<MainMenuTransition>().BlockedTransition();
-            Invoke("LoadSinglePlayer", 2f);
+            StartCoroutine(LoadSinglePlayer());
         });
 
         multiplayerButton.onClick.AddListener(() => {
             GetComponent<MainMenuTransition>().BlockedTransition();
-            Invoke("LoadMultiplayer", 2f);
+            StartCoroutine(LoadMultiplayer());
         });
 
         settingsButton.onClick.AddListener(() => {
@@ -30,14 +31,21 @@ public class ButtonManager : MonoBehaviour
             Invoke("LoadSettings", 2f);
         });
     }
-
-    private void LoadSinglePlayer()
+    private IEnumerator LoadSinglePlayer()
     {
-        Debug.Log("Enter Game");
-    }
-    private void LoadMultiplayer()
+        Debug.Log("Load single player");
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("OneComputerTwoPlayers");
+        yield return new WaitForSeconds(0.01f);
+        GameObject.Find("/GameManager").GetComponent<GameStateManager>().SinglePlayer = true;
+    }    
+    private IEnumerator LoadMultiplayer()
     {
-        Debug.Log("Enter Hosting/Joining Menu");
+        Debug.Log("Load Multiplayer");
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("OneComputerTwoPlayers");
+        yield return new WaitForSeconds(0.01f);
+        GameObject.Find("/GameManager").GetComponent<GameStateManager>().SinglePlayer = false;
     }
     private void LoadSettings()
     {

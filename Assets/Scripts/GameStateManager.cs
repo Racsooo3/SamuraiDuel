@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
-    [SerializeField] private bool SinglePlayer;
+    public bool SinglePlayer;
     public GameBaseState currentState;
     public GameInitiateState InitiateState = new GameInitiateState();
     public GameStartState StartState = new GameStartState();
