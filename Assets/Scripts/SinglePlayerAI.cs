@@ -39,8 +39,7 @@ public class SinglePlayerAI
             }
             AttackType[] tempAT = new AttackType[] {AttackType.Empty, AttackType.Empty, AttackType.Empty};
             int count = 0;
-            UnityEngine.Debug.Log("HERE");
-            for(int x =5; x>-5 && count<=2; x--)
+            for(int x =5; x>=0 && count<=2; x--)
             {
                 for(int y=0;y<usefullness.Length && count<=2; y++)
                 {
@@ -58,32 +57,37 @@ public class SinglePlayerAI
         else
         {
             // random num that get form random of GameData.player2CardList
-            int[] num = new int[3] { -1,-1,-1};
-            num[0] = (int)Mathf.Floor(UnityEngine.Random.Range(0f, (float)myCardInHand-0.01f));
-            num[1] = num[0];
-            while (num[0] == num[1])
+            float[] usefullness = new float[myCardInHand];
+
+            for (int x = 0; x < myCardInHand; x++)
             {
-                num[1] = (int)Mathf.Floor(UnityEngine.Random.Range(0f, (float)myCardInHand - 0.01f));
+                usefullness[x] = DetermineUsefullnessNotLastRound(GameData.player2CardList[x]);
             }
-            num[2] = num[0];
-            while (num[2] == num[0] || num[2] == num[1])
+            AttackType[] tempAT = new AttackType[] { AttackType.Empty, AttackType.Empty, AttackType.Empty };
+            for (int y = 0; y < 3; y++)
             {
-                num[2] = (int)Mathf.Floor(UnityEngine.Random.Range(0f, (float)myCardInHand - 0.01f));
+                int largest = 0;
+                for (int x = 0; x < usefullness.Length; x++)
+                {
+                    if (usefullness[x] > usefullness[largest])
+                    {
+                        largest = x;
+                    }
+                    if (x == usefullness.Length - 1)
+                    {
+                        tempAT[y] = GameData.player2CardList[largest];
+                    }
+                }
             }
-            //random empty and card
-            AttackType[] tempAt = new AttackType[3];
+            // random empty
             for(int x =0; x < 3; x++)
             {
-                if (UnityEngine.Random.value < 0.85)
+                if (UnityEngine.Random.value > 0.85)
                 {
-                    tempAt[x] = GameData.player2CardList[num[x]];
-                }
-                else
-                {
-                    tempAt[x] = AttackType.Empty;
+                    tempAT[x] = AttackType.Empty;
                 }
             }
-            RandomToOrder(tempAt);
+            RandomToOrder(tempAT);
             GamePlaceCardTwoState tempstate = new GamePlaceCardTwoState();
             tempstate.RandomFoldCardUntilLeft2ForPlayer2();
         }
@@ -140,6 +144,71 @@ public class SinglePlayerAI
         }
         return -4;
     }
+    private float DetermineUsefullnessNotLastRound(AttackType At)
+    {
+        float usefullness = 0;
+        if (At == AttackType.Slash)
+        {
+            foreach (AttackType at in GameData.player1CardList)
+            {
+                if (at == AttackType.Sneak)
+                {
+                    usefullness++;
+                }
+                if (at == AttackType.Counter)
+                {
+                    usefullness--;
+                }
+            }
+        }
+        if (At == AttackType.Counter)
+        {
+            foreach (AttackType at in GameData.player1CardList)
+            {
+                if (at == AttackType.Sneak)
+                {
+                    usefullness--;
+                }
+                if (at == AttackType.Slash)
+                {
+                    usefullness++;
+                }
+            }
+        }
+        if (At == AttackType.Sneak)
+        {
+            foreach (AttackType at in GameData.player1CardList)
+            {
+                if (at == AttackType.Counter)
+                {
+                    usefullness++;
+                }
+                if (at == AttackType.Slash)
+                {
+                    usefullness--;
+                }
+            }
+        }
+        int totalcardleft = GameData.player1CounterLeft + GameData.player1SlashLeft + GameData.player1SneakLeft;
+        float nextRoundSlashProability = GameData.player1SlashLeft / totalcardleft;
+        float nextRoundSneakProability = GameData.player1SneakLeft / totalcardleft;
+        float nextRoundCounterProability = GameData.player1CounterLeft / totalcardleft;
+
+        if (At == AttackType.Slash)
+        {
+            usefullness+= (nextRoundSneakProability - nextRoundCounterProability)*3;          
+        }
+        if (At == AttackType.Counter)
+        {
+            usefullness += (nextRoundSlashProability - nextRoundSneakProability) * 3;
+        }
+        if (At == AttackType.Sneak)
+        {
+            usefullness += (nextRoundCounterProability - nextRoundSlashProability) * 3;
+        }
+        return usefullness;
+    }
+
     private void RandomToOrder(AttackType[] At)
     {
         GameData.player2CardOrder = new List<AttackType>{ AttackType.Empty, AttackType.Empty, AttackType.Empty };
