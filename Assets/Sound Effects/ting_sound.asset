@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundName: ting
   volume: 1
-  clip: {fileID: 8300000, guid: bbbd8bf259a15564cafa83c54dfa91af, type: 3}
+  clip: {fileID: 8300000, guid: 29e2def542aeae8418dbd0cbb700fbd5, type: 3}
   loop: 0
