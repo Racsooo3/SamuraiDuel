@@ -7,8 +7,9 @@ public class GameInitiateState : GameBaseState
     public override void EnterState(GameStateManager game)
     {
         Debug.Log("InitiateState");
+        int roundsInTotal = GameObject.Find("GameManager").GetComponent<Settings>().GetTotalRounds();
 
-        GameData.Initialize();
+        GameData.Initialize(roundsInTotal);
         game.SwitchState(game.StartState);
     }
 

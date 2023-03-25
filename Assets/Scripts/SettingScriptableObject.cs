@@ -4,4 +4,5 @@ using UnityEngine;
 public class SettingScriptableObject : ScriptableObject
 {
     public float waitingTime;
+    public int rounds;
 }

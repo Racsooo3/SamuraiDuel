@@ -9,49 +9,79 @@ using UnityEngine.UI;
 public class SettingsManager : MonoBehaviour
 {
     public TextMeshProUGUI waitingTimeDisplay;
+    public TextMeshProUGUI roundDisplay;
 
     public Button saveButton;
-    public Button largerButton;
-    public Button shorterButton;
+    public Button timeLargerButton;
+    public Button timeShorterButton;
+
+    public Button roundLargerButton;
+    public Button roundShorterButton;
+
 
     public SettingScriptableObject Settings;
     float waitingTime;
+    int rounds;
 
     private void Start()
     {
         waitingTime = Settings.waitingTime;
+        rounds = Settings.rounds;
         UpdateWT();
+        UpdateRound();
 
         saveButton.onClick.AddListener(() =>
         {
-            SetWaitingTime();
+            SaveSettings();
             GameObject.Find("GameManager").GetComponent<MainMenuTransition>().BlockedTransition();
             Invoke("ChangeScene", 2f);
         });
 
-        largerButton.onClick.AddListener(() =>
+        timeLargerButton.onClick.AddListener(() =>
         {
             waitingTime += 15f;
             waitingTime = Mathf.Clamp(waitingTime, 15f, 300f);
             UpdateWT();
         });
 
-        shorterButton.onClick.AddListener(() =>
+        timeShorterButton.onClick.AddListener(() =>
         {
             waitingTime -= 15f;
             waitingTime = Mathf.Clamp(waitingTime, 15f, 300f);
             UpdateWT();
         });
+
+        roundLargerButton.onClick.AddListener(() =>
+        {
+            rounds += 2;
+            rounds = Mathf.Clamp(rounds, 3, 9);
+            UpdateRound();
+        });
+
+        roundShorterButton.onClick.AddListener(() =>
+        {
+            rounds -= 2;
+            rounds = Mathf.Clamp(rounds, 3, 9);
+            UpdateRound();
+        });
+
+
     }
 
-    public void SetWaitingTime()
+    public void SaveSettings()
     {
         Settings.waitingTime = waitingTime;
+        Settings.rounds = rounds;
     }
 
     private void UpdateWT()
     {
         waitingTimeDisplay.text = "Timer of each round:\r\n" + waitingTime + " seconds";
+    }
+
+    private void UpdateRound()
+    {
+        roundDisplay.text = "Total rounds:\r\n" + rounds + " rounds";
     }
 
     private void ChangeScene()

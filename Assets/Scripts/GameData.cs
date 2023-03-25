@@ -89,9 +89,9 @@ public class GameData
         return null;
     }
 
-    public static void Initialize()
+    public static void Initialize(int rounds)
     {
-        totalNumberOfRound = 3;
+        totalNumberOfRound = rounds;
         currentRound = 0;
 
         player1Health = maxHealth;

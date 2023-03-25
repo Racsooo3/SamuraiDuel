@@ -8,9 +8,6 @@ public class GameStartState : GameBaseState
     {
         Debug.Log("StartState");
 
-        RoundDisplay RD = GameObject.Find("Round Display").GetComponent<RoundDisplay>();
-        RD.RoundTextDisplay(GameData.currentRound+1);
-
         // Check wheather game is end
         if (GameData.currentRound >= GameData.totalNumberOfRound)
         {
@@ -19,6 +16,12 @@ public class GameStartState : GameBaseState
         {
             // New Round has started // First round is = 1, second round = 2 ...
             GameData.currentRound++;
+            GameObject.Find("Animation Panel").GetComponent<RoundAnimation>().DisplayRoundAnimation();
+
+            // Update the round display
+            RoundDisplay RD = GameObject.Find("Round Display").GetComponent<RoundDisplay>();
+            RD.RoundTextDisplay(GameData.currentRound);
+
             game.SwitchState(game.CardDistributeState);
         }
     }

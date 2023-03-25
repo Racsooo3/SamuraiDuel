@@ -9,8 +9,14 @@ public class Settings : MonoBehaviour
 
     public float GetEachRoundTimer()
     {
-        Debug.Log(settingSO.waitingTime);
+        //Debug.Log(settingSO.waitingTime);
         return settingSO.waitingTime;
+    }
+
+    public int GetTotalRounds()
+    {
+        //Debug.Log(settingSO.rounds);
+        return settingSO.rounds;
     }
 
     private void Update()

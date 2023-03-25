@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Setting 1
   m_EditorClassIdentifier: 
   waitingTime: 90
+  rounds: 3
