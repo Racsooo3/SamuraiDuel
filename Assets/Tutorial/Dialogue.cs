@@ -4,5 +4,6 @@ using UnityEngine;
 
 public static class Dialogue
 {
-    public static string[] dialogueArray;
+    public static string dialogue;
+    public static Event unityEvent;
 }

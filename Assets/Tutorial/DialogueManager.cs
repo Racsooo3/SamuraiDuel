@@ -83,6 +83,11 @@ public class DialogueManager : MonoBehaviour
             specialEvents.BoardFocusFold();
         }
 
+        if (dialogueCount == 16)
+        {
+            specialEvents.BoardFocusFlags();
+        }
+
     }
 
     public void DialogueRunNext()
