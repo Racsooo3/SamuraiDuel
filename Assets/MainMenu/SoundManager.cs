@@ -4,9 +4,22 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        } else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     [SerializeField] private string SoundPlayOnAwake;
     [SerializeField] private string MusicPlayOnAwake;
-
 
     public List<SoundScriptableObject> SoundList = new List<SoundScriptableObject>();
 
@@ -32,7 +45,7 @@ public class SoundManager : MonoBehaviour
     {
         foreach (SoundScriptableObject s in SoundList)
         {
-            if (s.soundName == soundName)
+            if (soundName != null && s.soundName == soundName)
             {
                 source.volume = s.volume;
                 source.PlayOneShot(s.clip);
@@ -43,7 +56,7 @@ public class SoundManager : MonoBehaviour
     {
         foreach (SoundScriptableObject s in SoundList)
         {
-            if (s.soundName == soundName)
+            if (soundName != null && s.soundName == soundName)
             {
                 source.volume = s.volume;
                 source.loop = s.loop;

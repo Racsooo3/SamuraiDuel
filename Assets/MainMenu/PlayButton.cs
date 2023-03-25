@@ -15,6 +15,10 @@ public class PlayButton : MonoBehaviour
     private void Start()
     {
         playButton.onClick.AddListener(() => {
+            //music
+            FindObjectOfType<SoundManager>().PlayMusic("game_bgm");
+            FindObjectOfType<SoundManager>().PlaySound("ting");
+
             GetComponent<MainMenuTransition>().BlockedTransition();
             Invoke("LoadMainMenuScene", 2f);
         });

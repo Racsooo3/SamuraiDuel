@@ -18,21 +18,29 @@ public class ButtonManager : MonoBehaviour
     private void Start()
     {
         singleButton.onClick.AddListener(() => {
+            //sound 
+            FindObjectOfType<SoundManager>().PlaySound("ting");
             GetComponent<MainMenuTransition>().BlockedTransition();
             StartCoroutine(LoadSinglePlayer());
         });
 
         multiplayerButton.onClick.AddListener(() => {
+            //sound 
+            FindObjectOfType<SoundManager>().PlaySound("ting");
             GetComponent<MainMenuTransition>().BlockedTransition();
             StartCoroutine(LoadMultiplayer());
         });
 
         settingsButton.onClick.AddListener(() => {
+            //sound 
+            FindObjectOfType<SoundManager>().PlaySound("ting");
             GetComponent<MainMenuTransition>().BlockedTransition();
             Invoke("LoadSettings", 2f);
         });
 
         tutorialButton.onClick.AddListener(() => {
+            //sound 
+            FindObjectOfType<SoundManager>().PlaySound("ting");
             GetComponent<MainMenuTransition>().BlockedTransition();
             Invoke("LoadTutorial", 2f);
         });

@@ -934,7 +934,6 @@ GameObject:
   m_Component:
   - component: {fileID: 540052645}
   - component: {fileID: 540052647}
-  - component: {fileID: 540052644}
   - component: {fileID: 540052646}
   - component: {fileID: 540052648}
   - component: {fileID: 540052649}
@@ -946,22 +945,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &540052644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540052643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ec562bb9a1dbc4caa4b46a6f3c2759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SoundPlayOnAwake: 
-  MusicPlayOnAwake: 
-  SoundList:
-  - {fileID: 11400000, guid: 82ff918643bb94543bf263d36ab3c3d3, type: 2}
 --- !u!4 &540052645
 Transform:
   m_ObjectHideFlags: 0
