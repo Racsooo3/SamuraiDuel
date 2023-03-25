@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbadc2f720d543d49a8b47726188e448, type: 3}
-  m_Name: bgm
+  m_Name: game_bgm
   m_EditorClassIdentifier: 
-  soundName: bgm
+  soundName: game_bgm
   volume: 1
   clip: {fileID: 8300000, guid: e6cca7edf71654947b8f18ddd29a979e, type: 3}
   loop: 1

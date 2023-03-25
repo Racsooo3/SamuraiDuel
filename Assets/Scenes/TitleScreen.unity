@@ -1702,7 +1702,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!82 &1477897396
 AudioSource:
@@ -1812,10 +1812,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ec562bb9a1dbc4caa4b46a6f3c2759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundPlayOnAwake: yo
+  SoundPlayOnAwake: ting
   MusicPlayOnAwake: 
   SoundList:
-  - {fileID: 11400000, guid: 82ff918643bb94543bf263d36ab3c3d3, type: 2}
+  - {fileID: 11400000, guid: c1aecb451b71cd942be9bf962a50316b, type: 2}
+  - {fileID: 11400000, guid: b347df1912df2fb408714fada3c1c6d5, type: 2}
+  - {fileID: 11400000, guid: 75a307b1da897484e96243b1102de305, type: 2}
+  - {fileID: 11400000, guid: 69d2f44f9bc32e144ab0a508a400c807, type: 2}
+  - {fileID: 11400000, guid: 98d63e4911dd09a4a93c45c02661d8d4, type: 2}
 --- !u!4 &1477897398
 Transform:
   m_ObjectHideFlags: 0
@@ -1828,7 +1832,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682265267
 GameObject:

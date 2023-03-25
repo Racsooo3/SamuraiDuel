@@ -7,6 +7,6 @@ public class GameGraphicSetting : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        Application.targetFrameRate = 39;
+        Application.targetFrameRate = 49;
     }
 }
