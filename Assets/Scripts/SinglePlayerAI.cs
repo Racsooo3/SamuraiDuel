@@ -73,9 +73,13 @@ public class SinglePlayerAI
                     {
                         largest = x;
                     }
-                    if (x == usefullness.Length - 1)
+                    if (x == usefullness.Length - 1 && usefullness[x] >= 0)
                     {
                         tempAT[y] = GameData.player2CardList[largest];
+                    }
+                    if (x == usefullness.Length - 1 && usefullness[x] < 0)
+                    {
+                        tempAT[y] = AttackType.Empty;
                     }
                 }
             }
@@ -196,15 +200,15 @@ public class SinglePlayerAI
 
         if (At == AttackType.Slash)
         {
-            usefullness+= (nextRoundSneakProability - nextRoundCounterProability)*3;          
+            usefullness-= (nextRoundSneakProability - nextRoundCounterProability)*3;          
         }
         if (At == AttackType.Counter)
         {
-            usefullness += (nextRoundSlashProability - nextRoundSneakProability) * 3;
+            usefullness -= (nextRoundSlashProability - nextRoundSneakProability) * 3;
         }
         if (At == AttackType.Sneak)
         {
-            usefullness += (nextRoundCounterProability - nextRoundSlashProability) * 3;
+            usefullness -= (nextRoundCounterProability - nextRoundSlashProability) * 3;
         }
         return usefullness;
     }
