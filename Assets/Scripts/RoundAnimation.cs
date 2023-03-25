@@ -6,7 +6,7 @@ public class RoundAnimation : MonoBehaviour
 {
     private Animator roundAnim;
 
-    private void Start()
+    private void Awake()
     {
         roundAnim = GameObject.Find("RoundDisplayAnimation").GetComponent<Animator>();
         roundAnim.gameObject.SetActive(false);
