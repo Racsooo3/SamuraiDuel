@@ -143,7 +143,7 @@ public class PlayerAnimation : MonoBehaviour
                 {
                     case AttackType.Slash:
                         ChangeAnimationState_P1("player_counter_slash");
-                        ChangeAnimationState_P2("player_slash_countered");
+                        ChangeAnimationState_P2("player_slash_counter");
                         break;
                     case AttackType.Counter:
                         ChangeAnimationState_P1("player_counter_counter");
