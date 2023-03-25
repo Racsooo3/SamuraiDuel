@@ -45,7 +45,7 @@ public class SoundManager : MonoBehaviour
     {
         foreach (SoundScriptableObject s in SoundList)
         {
-            if (s.soundName == soundName)
+            if (soundName != null && s.soundName == soundName)
             {
                 source.volume = s.volume;
                 source.PlayOneShot(s.clip);
@@ -56,7 +56,7 @@ public class SoundManager : MonoBehaviour
     {
         foreach (SoundScriptableObject s in SoundList)
         {
-            if (s.soundName == soundName)
+            if (soundName != null && s.soundName == soundName)
             {
                 source.volume = s.volume;
                 source.loop = s.loop;
