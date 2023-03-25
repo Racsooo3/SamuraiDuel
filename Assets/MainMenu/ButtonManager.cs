@@ -42,16 +42,14 @@ public class ButtonManager : MonoBehaviour
         Debug.Log("Load single player");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("OneComputerTwoPlayers");
-        yield return new WaitForSeconds(0.01f);
-        GameObject.Find("/GameManager").GetComponent<GameStateManager>().SinglePlayer = true;
+        GameStateManager.SinglePlayer = true;
     }    
     private IEnumerator LoadMultiplayer()
     {
         Debug.Log("Load Multiplayer");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("OneComputerTwoPlayers");
-        yield return new WaitForSeconds(0.01f);
-        GameObject.Find("/GameManager").GetComponent<GameStateManager>().SinglePlayer = false;
+        GameStateManager.SinglePlayer = false;
     }
     private void LoadTutorial()
     {
