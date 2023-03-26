@@ -72,7 +72,7 @@ public class Pause : MonoBehaviour
     {
         screenCanvasGroup.alpha -= Time.unscaledDeltaTime / 0.8f;
         yield return new WaitForSeconds(0f);
-        if (screenCanvasGroup.alpha >= 1f)
+        if (screenCanvasGroup.alpha >= 0f)
         {
             StartCoroutine(TurnUnBlack());
         }
