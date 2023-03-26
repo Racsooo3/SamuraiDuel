@@ -249,4 +249,26 @@ public class PlayerAnimation : MonoBehaviour
         currentState_P2 = newState;
         player2.GetComponent<Animator>().Play(newState);
     }
+
+    public void DetermineEndAnimation()
+    {
+        int P1_final_score = GameData.player1Dominates;
+        int P2_final_score = GameData.player2Dominates;
+
+        if (P1_final_score > P2_final_score)
+        {
+            ChangeAnimationState_P1("player_relax");
+            ChangeAnimationState_P1("player_die");
+        }
+        else if (P2_final_score > P1_final_score)
+        {
+            ChangeAnimationState_P1("player_die");
+            ChangeAnimationState_P1("player_relax");
+        }
+        else
+        {
+            ChangeAnimationState_P1("player_relax");
+            ChangeAnimationState_P1("player_relax");
+        }
+    }
 }
