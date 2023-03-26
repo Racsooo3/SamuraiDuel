@@ -104,5 +104,8 @@ public class GameData
         player2SlashLeft = totalNumberOfRound;
         player2SneakLeft = totalNumberOfRound;
         player2CounterLeft = totalNumberOfRound;
+
+        player1Dominates = 0;
+        player2Dominates = 0;
     }
 }
