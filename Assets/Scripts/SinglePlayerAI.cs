@@ -73,15 +73,16 @@ public class SinglePlayerAI
                     {
                         largest = x;
                     }
-                    if (x == usefullness.Length - 1 && usefullness[x] >= 0)
-                    {
-                        tempAT[y] = GameData.player2CardList[largest];
-                    }
-                    if (x == usefullness.Length - 1 && usefullness[x] < 0)
-                    {
-                        tempAT[y] = AttackType.Empty;
-                    }
                 }
+                if (usefullness[largest] >= 0)
+                {
+                    tempAT[y] = GameData.player2CardList[largest];
+                }
+                if ( usefullness[largest] < 0)
+                {
+                    tempAT[y] = AttackType.Empty;
+                }
+                usefullness[largest] = -1;
             }
             // random empty
             for(int x =0; x < 3; x++)
