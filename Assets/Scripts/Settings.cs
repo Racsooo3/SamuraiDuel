@@ -19,12 +19,9 @@ public class Settings : MonoBehaviour
         return settingSO.rounds;
     }
 
-    private void Update()
+    public bool GetEyeHelper()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            print(" 1: "+ GameData.GetPlayerCardLeft(1)[0] + " " + GameData.GetPlayerCardLeft(1)[1] + " " + GameData.GetPlayerCardLeft(1)[2]);
-            print(" 2: "+ GameData.GetPlayerCardLeft(2)[0] + " " + GameData.GetPlayerCardLeft(2)[1] + " " + GameData.GetPlayerCardLeft(2)[2]);
-        }
+        //Debug.Log(settingSO.eyeHelper);
+        return settingSO.eyeHelper;
     }
 }

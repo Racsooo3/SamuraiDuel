@@ -25,6 +25,12 @@ public class GamePlaceCardTwoState : GameBaseState
         //timer ref
         localTimer = GameObject.FindObjectOfType<Settings>().GetEachRoundTimer();
         timerText = GameObject.FindObjectOfType<Timer>();
+
+        //Display helper if its turned on
+        if (GameObject.Find("GameManager").GetComponent<Settings>().GetEyeHelper() == true)
+        {
+            GameObject.Find("EyeHelperAnimation").GetComponent<EyeHelper>().PlayersTurn(1);
+        }
     }
 
     public override void UpdateState(GameStateManager game)

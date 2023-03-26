@@ -13,6 +13,8 @@ public class Pause : MonoBehaviour
     Canvas PauseCanvas;
     RectTransform ReturnGameTransform;
     RectTransform QuitGameTransform;
+
+    bool PauseButtonLock;
     private void Awake()
     {
         screenCanvasGroup = transform.GetChild(0).GetComponent<CanvasGroup>();
@@ -28,73 +30,98 @@ public class Pause : MonoBehaviour
         ReturnGameTransform.anchoredPosition = new Vector2(0, 1031);
         QuitGameTransform.anchoredPosition = new Vector2(0, 855);
         //set the button
-        PauseButton.onClick.AddListener(() => {
-            StartCoroutine(PauseGame());
+        PauseButton.onClick.AddListener(() =>
+        {
+            if (PauseButtonLock) return;
+            PauseGame();
         });
-        gameObject.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => {
-            StartCoroutine(ReturnGame());
+        gameObject.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
+        {
+            if (PauseButtonLock) return;
+            ReturnGame();
         });
-        gameObject.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => {
+        gameObject.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() =>
+        {
             QuitGame();
         });
     }
 
-    private IEnumerator PauseGame()
+    private void PauseGame()
     {
+        PauseButtonLock = true;
         PauseCanvas.sortingOrder = 2;
         Time.timeScale = 0;
         StartCoroutine(ButtonFall());
         StartCoroutine(TurnBlack());
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
     }
-    private IEnumerator ReturnGame()
+    private void ReturnGame()
     {
-        Time.timeScale = 0;
+        PauseButtonLock = true;
+        Time.timeScale = 1;
         PauseCanvas.sortingOrder = -1;
         StartCoroutine(ButtonUp());
         StartCoroutine(TurnUnBlack());
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
     }
     private void QuitGame()
     {
-        Debug.Log("Quit");
+        Debug.Log("Quit Match");
+        ReturnGame();
+        LoadMainMenu();
     }
     private IEnumerator TurnBlack()
     {
-        screenCanvasGroup.alpha += Time.unscaledDeltaTime / 0.8f;
+        screenCanvasGroup.alpha = 0.6f;
+        //screenCanvasGroup.alpha += 0.8f * Time.unscaledDeltaTime;
         yield return new WaitForSeconds(0f);
-        if (screenCanvasGroup.alpha <= 0.8f)
-        {
-            StartCoroutine(TurnBlack());
-        }
+        /*        if (screenCanvasGroup.alpha <= 0.8f)
+                {
+                    StartCoroutine(TurnBlack());
+                }*/
     }
     private IEnumerator TurnUnBlack()
     {
-        screenCanvasGroup.alpha -= Time.unscaledDeltaTime / 0.8f;
+        screenCanvasGroup.alpha = 0f;
+
+        //screenCanvasGroup.alpha -= 0.8f * Time.unscaledDeltaTime;
         yield return new WaitForSeconds(0f);
-        if (screenCanvasGroup.alpha >= 0f)
-        {
-            StartCoroutine(TurnUnBlack());
-        }
+        /*        if (screenCanvasGroup.alpha >= 0.001f) // the alpha value can never be zero because of line 77
+                {
+                    StartCoroutine(TurnUnBlack());
+                }*/
     }
     private IEnumerator ButtonFall()
     {
-        ReturnGameTransform.anchoredPosition -= new Vector2(0, 1000 * Time.unscaledDeltaTime);
-        QuitGameTransform.anchoredPosition -= new Vector2(0, 1000 * Time.unscaledDeltaTime);
+        ReturnGameTransform.anchoredPosition -= new Vector2(0, 1500 * Time.unscaledDeltaTime);
+        QuitGameTransform.anchoredPosition -= new Vector2(0, 1500 * Time.unscaledDeltaTime);
         yield return new WaitForSeconds(0f);
         if (ReturnGameTransform.anchoredPosition.y >= 126)
         {
             StartCoroutine(ButtonFall());
         }
+        else
+        {
+            PauseButtonLock = false;
+        }
     }
     private IEnumerator ButtonUp()
     {
-        ReturnGameTransform.anchoredPosition += new Vector2(0, 1000 * Time.unscaledDeltaTime);
-        QuitGameTransform.anchoredPosition += new Vector2(0, 1000 * Time.unscaledDeltaTime);
+        ReturnGameTransform.anchoredPosition += new Vector2(0, 1500 * Time.unscaledDeltaTime);
+        QuitGameTransform.anchoredPosition += new Vector2(0, 1500 * Time.unscaledDeltaTime);
         yield return new WaitForSeconds(0f);
         if (ReturnGameTransform.anchoredPosition.y <= 1040)
         {
             StartCoroutine(ButtonUp());
         }
+        else
+        {
+            PauseButtonLock = false;
+        }
+    }
+
+    private void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

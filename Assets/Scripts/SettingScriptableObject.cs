@@ -5,4 +5,5 @@ public class SettingScriptableObject : ScriptableObject
 {
     public float waitingTime;
     public int rounds;
+    public bool eyeHelper;
 }
