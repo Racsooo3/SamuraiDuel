@@ -107,5 +107,17 @@ public class GameData
 
         player1Dominates = 0;
         player2Dominates = 0;
-    }
+
+        player1CardList = new List<AttackType>();
+        player2CardList = new List<AttackType>();
+
+        player1CardOrder = new List<AttackType> { AttackType.Empty, AttackType.Empty, AttackType.Empty };
+        player2CardOrder = new List<AttackType> { AttackType.Empty, AttackType.Empty, AttackType.Empty };
+
+        player1CardLastRound = new List<AttackType>();
+        player2CardLastRound = new List<AttackType>();
+
+        player1CardFold = new int[] { 0, 0, 0 };
+        player2CardFold = new int[] { 0, 0, 0 };
+}
 }
