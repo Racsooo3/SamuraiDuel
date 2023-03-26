@@ -1491,7 +1491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flag: {fileID: 8312329273748870933, guid: f1189d8157f6fd944ad2cd04c774c26b, type: 3}
-  flagSeperation: 150
+  flagSeperation: 50
 --- !u!1 &385584734
 GameObject:
   m_ObjectHideFlags: 0
