@@ -32,6 +32,8 @@ public class SettingsManager : MonoBehaviour
 
         saveButton.onClick.AddListener(() =>
         {
+            //Music
+            FindObjectOfType<SoundManager>().PlaySound("ting");
             SaveSettings();
             GameObject.Find("GameManager").GetComponent<MainMenuTransition>().BlockedTransition();
             Invoke("ChangeScene", 2f);

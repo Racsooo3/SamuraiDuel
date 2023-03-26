@@ -30,7 +30,10 @@ public class GamePlaceCardOneState : GameBaseState
         //Display helper if its turned on
         if (GameObject.Find("GameManager").GetComponent<Settings>().GetEyeHelper() == true)
         {
+            GameObject.Find("EyeHelperAnimation").GetComponent<EyeHelper>().ShowHelpers(true);
             GameObject.Find("EyeHelperAnimation").GetComponent<EyeHelper>().PlayersTurn(1);
+        } else {
+            GameObject.Find("EyeHelperAnimation").GetComponent<EyeHelper>().ShowHelpers(false);
         }
     }
 

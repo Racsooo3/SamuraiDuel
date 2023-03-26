@@ -11,38 +11,46 @@ public class Pause : MonoBehaviour
 
     CanvasGroup screenCanvasGroup;
     Canvas PauseCanvas;
-    RectTransform ReturnGameTransform;
-    RectTransform QuitGameTransform;
+    Button ReturnGameButton;
+    Button QuitGameButton;
+    Button ToggleHelperButton;
+    RectTransform ButtonsTransform;
 
     bool PauseButtonLock;
     private void Awake()
     {
         screenCanvasGroup = transform.GetChild(0).GetComponent<CanvasGroup>();
         PauseCanvas = gameObject.GetComponent<Canvas>();
-        ReturnGameTransform = gameObject.transform.GetChild(1).GetComponent<RectTransform>();
-        QuitGameTransform = gameObject.transform.GetChild(2).GetComponent<RectTransform>();
+        ReturnGameButton = gameObject.transform.GetChild(1).GetChild(0).GetComponent<Button>();
+        QuitGameButton = gameObject.transform.GetChild(1).GetChild(1).GetComponent<Button>();
+        ToggleHelperButton = gameObject.transform.GetChild(1).GetChild(2).GetComponent<Button>();
+
+        ButtonsTransform = transform.GetChild(1).GetComponent<RectTransform>();
     }
     void Start()
     {
         // default seting
         PauseCanvas.sortingOrder = -1;
         screenCanvasGroup.alpha = 0;
-        ReturnGameTransform.anchoredPosition = new Vector2(0, 1031);
-        QuitGameTransform.anchoredPosition = new Vector2(0, 855);
+
         //set the button
         PauseButton.onClick.AddListener(() =>
         {
             if (PauseButtonLock) return;
             PauseGame();
         });
-        gameObject.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
+        ReturnGameButton.onClick.AddListener(() =>
         {
             if (PauseButtonLock) return;
             ReturnGame();
         });
-        gameObject.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() =>
+        QuitGameButton.onClick.AddListener(() =>
         {
             QuitGame();
+        });
+        ToggleHelperButton.onClick.AddListener(() =>
+        {
+            ToggleHelper();
         });
     }
 
@@ -93,10 +101,10 @@ public class Pause : MonoBehaviour
     }
     private IEnumerator ButtonFall()
     {
-        ReturnGameTransform.anchoredPosition -= new Vector2(0, 1500 * Time.unscaledDeltaTime);
-        QuitGameTransform.anchoredPosition -= new Vector2(0, 1500 * Time.unscaledDeltaTime);
+        ButtonsTransform.anchoredPosition -= new Vector2(0, 1500 * Time.unscaledDeltaTime);
+
         yield return new WaitForSeconds(0f);
-        if (ReturnGameTransform.anchoredPosition.y >= 126)
+        if (ButtonsTransform.anchoredPosition.y >= 0)
         {
             StartCoroutine(ButtonFall());
         }
@@ -107,10 +115,10 @@ public class Pause : MonoBehaviour
     }
     private IEnumerator ButtonUp()
     {
-        ReturnGameTransform.anchoredPosition += new Vector2(0, 1500 * Time.unscaledDeltaTime);
-        QuitGameTransform.anchoredPosition += new Vector2(0, 1500 * Time.unscaledDeltaTime);
+        ButtonsTransform.anchoredPosition += new Vector2(0, 1500 * Time.unscaledDeltaTime);
+
         yield return new WaitForSeconds(0f);
-        if (ReturnGameTransform.anchoredPosition.y <= 1040)
+        if (ButtonsTransform.anchoredPosition.y <= 900)
         {
             StartCoroutine(ButtonUp());
         }
@@ -123,5 +131,21 @@ public class Pause : MonoBehaviour
     private void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+
+    [SerializeField] SettingScriptableObject Settings;
+    private bool ToggleHelper()
+    {
+        if (Settings.eyeHelper == true)
+        {
+            Settings.eyeHelper = false;
+            FindObjectOfType<EyeHelper>().ShowHelpers(false);
+        } else
+        {
+            Settings.eyeHelper = true;
+            FindObjectOfType<EyeHelper>().ShowHelpers(true);
+        }
+        return Settings.eyeHelper;
     }
 }
