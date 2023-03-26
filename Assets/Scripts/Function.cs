@@ -151,7 +151,7 @@ public static class Function
     public static void ResetPlayerHealthPoint()
     {
         GameData.player1Health = 100;
-        GameData.player1Health = 100;
+        GameData.player2Health = 100;
     }
 
 }
