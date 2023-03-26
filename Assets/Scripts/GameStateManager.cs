@@ -37,6 +37,12 @@ public class GameStateManager : MonoBehaviour
         currentState = state;
         state.EnterState(this);
     }
+
+    public GameBaseState GetCurrentState()
+    {
+        return currentState;
+    }
+
     // skip player2 state and run the AI
     private void SinglePlayerState()
     {

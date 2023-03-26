@@ -59,12 +59,14 @@ public class GamePlaceCardTwoState : GameBaseState
         }
     }
 
-    public void EndTimer()
+    public bool EndTimer()
     {
         if (!DetermineIfMoreThan2CardLeftForPlayer2())
         {
             localTimer = 0;
+            return true;// Time is reduced
         }
+        return false; // Time reduction failed.
     }
     private bool DetermineIfMoreThan2CardLeftForPlayer2()
     {

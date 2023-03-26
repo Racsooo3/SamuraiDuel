@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class GamePlaceCardOneState : GameBaseState
@@ -32,7 +31,8 @@ public class GamePlaceCardOneState : GameBaseState
         {
             GameObject.Find("EyeHelperAnimation").GetComponent<EyeHelper>().ShowHelpers(true);
             GameObject.Find("EyeHelperAnimation").GetComponent<EyeHelper>().PlayersTurn(1);
-        } else {
+        } else 
+        {
             GameObject.Find("EyeHelperAnimation").GetComponent<EyeHelper>().ShowHelpers(false);
         }
     }
@@ -59,12 +59,14 @@ public class GamePlaceCardOneState : GameBaseState
         }
     }
 
-    public void EndTimer()
+    public bool EndTimer()
     {
         if (!DetermineIfMoreThan2CardLeftForPlayer1())
         {
             localTimer = 0;
+            return true;// Time is reduced
         }
+        return false; // Time reduction failed.
     }
 
     private bool DetermineIfMoreThan2CardLeftForPlayer1()
