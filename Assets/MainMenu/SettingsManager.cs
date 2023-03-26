@@ -34,7 +34,9 @@ public class SettingsManager : MonoBehaviour
         {
             //Music
             FindObjectOfType<SoundManager>().PlaySound("ting");
-            SaveSettings();
+            SaveSettings();// not working
+            Debug.Log("Settings: " + Settings.waitingTime + " " + Settings.rounds);
+
             GameObject.Find("GameManager").GetComponent<MainMenuTransition>().BlockedTransition();
             Invoke("ChangeScene", 2f);
         });
@@ -66,8 +68,6 @@ public class SettingsManager : MonoBehaviour
             rounds = Mathf.Clamp(rounds, 3, 9);
             UpdateRound();
         });
-
-
     }
 
     public void SaveSettings()

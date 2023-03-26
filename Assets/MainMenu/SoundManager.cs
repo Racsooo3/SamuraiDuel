@@ -48,7 +48,7 @@ public class SoundManager : MonoBehaviour
             if (soundName != null && s.soundName == soundName)
             {
                 source.volume = s.volume;
-                source.PlayOneShot(s.clip);
+                source.PlayOneShot(s.clip, source.volume);
             }
         }
     }
@@ -60,7 +60,8 @@ public class SoundManager : MonoBehaviour
             {
                 source.volume = s.volume;
                 source.loop = s.loop;
-                source.PlayOneShot(s.clip);
+                source.clip = s.clip;
+                source.Play(0);
             }
         }
     }
